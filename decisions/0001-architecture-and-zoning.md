@@ -2,7 +2,7 @@
 
 - Date: 2026-10-16
 - Status: provisional default for first CAD iteration; revisable on measurement/data
-- Hard constraints: one 1S 18650, motor/gearbox at top, long narrow PCB opposite battery, BLE core, unknown dimensions stay TBD, no manufacturing claim.
+- Current product constraints: one 1S cell beside the long PCB; motor/gearbox at top; BLE core. The prior brief says 18650, factory TXT says 18500, and the STEP cell-like geometry is 18 × 50 mm; exact cell remains TBD pending sampled-cell/BOM confirmation. Unknown dimensions stay TBD; no manufacturing claim.
 
 ## Options compared
 

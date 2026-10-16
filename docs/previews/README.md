@@ -1,3 +1,3 @@
-# Engineering overview preview
+# Preview policy
 
-`engineering-overview.png` is an agent-generated capability-test discussion graphic for the current PRE-CAD architecture and functional zones. It is illustrative and not to scale, and is not designer-confirmed product geometry. The KiCad files are editable agent-test placeholders, not a designer-approved PCB baseline. Use the designer-confirmed Drive CAD/DWG/STEP files for product mechanical facts. Do not use this image or the placeholder board for dimensioning, footprint placement, routing, fit verification, or fabrication. See `docs/FACTORY_PROTOTYPE_GEOMETRY_REPORT.md` for parsed prototype source dimensions.
+No illustrative Agent-generated product preview is published as a product or CAD authority. Use the source drawings/CAD and editable KiCad project; all unverified geometry must be labeled as an engineering placeholder.

@@ -44,4 +44,4 @@ The drawing is a logical sequence only, not a measured layout. The current board
 
 ## Physical boundaries remain open
 
-18650 cylinder and contact geometry; PCB max width/length/thickness; shell/lockbody metal volume; motor and gearbox envelope; axis datum, coupling and top-end clearance; service access; RF/NFC antenna geometry. All are maintained as TBD in `MECHANICAL_INPUTS.md` and represented as not-to-scale placeholders in KiCad.
+Cell cylinder and contact geometry (18500 vs 18650 unresolved); PCB max width/length/thickness; shell/lockbody metal volume; motor and gearbox envelope; axis datum, coupling and top-end clearance; service access; RF/NFC antenna geometry. All remain TBD in `MECHANICAL_INPUTS.md` and are planning annotations in KiCad.

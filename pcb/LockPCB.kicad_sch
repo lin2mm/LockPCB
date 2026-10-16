@@ -12,7 +12,7 @@
   (lib_symbols)
   (text "PRE-CAD PLACEHOLDER - NOT A RELEASED SCHEMATIC" (at 25 28 0) (effects (font (size 1.8 1.8)) (justify left bottom)) (uuid "c88e27b1-4762-4b0f-9f22-bf3515f8e4fd"))
   (text "POWER TREE / DEFAULT ARCHITECTURE CANDIDATE" (at 25 40 0) (effects (font (size 1.4 1.4)) (justify left bottom)) (uuid "c80b2444-ad2e-405b-9d6d-44422a2f95ec"))
-  (text "1S 18650 (BT1; evaluate Molicel P28A; exact cell/holder/protection TBD) -> VBAT_1S" (at 30 49 0) (effects (font (size 1.1 1.1)) (justify left bottom)) (uuid "f6badcb7-2c88-4b29-b098-54d0ce770f51"))
+  (text "1S cell (BT1; 18500 vs 18650 unresolved; cell/holder/protection TBD) -> VBAT_1S" (at 30 49 0) (effects (font (size 1.1 1.1)) (justify left bottom)) (uuid "f6badcb7-2c88-4b29-b098-54d0ce770f51"))
   (text "VBAT_1S -> U3 brushed DC motor driver candidate -> M1 motor/gearbox (ratings TBD)" (at 30 58 0) (effects (font (size 1.1 1.1)) (justify left bottom)) (uuid "dcc039e7-2ccd-4aa1-9c1d-53acb37105c2"))
   (text "VBAT_1S -> U2 3.3 V Buck-Boost candidate -> +3V3_MAIN -> U1 certified BLE module candidate" (at 30 67 0) (effects (font (size 1.1 1.1)) (justify left bottom)) (uuid "10d51003-f8c7-42ba-b138-a0983ee0d184"))
   (text "U4 secure element candidate (optional) and sensors/interfaces TBD on +3V3_MAIN" (at 30 76 0) (effects (font (size 1.1 1.1)) (justify left bottom)) (uuid "6b974345-8838-4cc5-9dd3-803a26650c15"))

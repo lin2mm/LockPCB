@@ -1,34 +1,21 @@
-# 机械与电气输入清单 — 设计师确认稿对齐中
+# Mechanical Inputs — Current Status
 
-更新：2026-10-16。按用户说明：设计师提供 ZIP 内的 CAD/DWG/STEP 等文件是设计师确认稿；工厂原型包的 8 个文件也已确认并送样。上一 session 的 Agent PCB 轮廓、布局与预览是能力测试/设计起点，不是产品确认几何。Agent 当前任务是依据确认稿对齐、推进设计；不得将测试占位反过来当作产品事实。
+This index points to the single current mechanical record: [`MECHANICAL_SOURCE_BASELINE.md`](MECHANICAL_SOURCE_BASELINE.md). It distinguishes designer-confirmed sources from Agent PCB annotations and records the 14 × 50 mm board outline source, the unresolved cell identity, sampled enclosure status, and engineering gates.
 
-## 已确认设计输入与待确认工程量
+## Inputs still required
 
-| 项目 | 来源/当前状态 | 后续工程工作 |
+| Input | Status | Required evidence/action |
 |---|---|---|
-| PCB 轮廓与尺寸 | 工厂 DWG、尺寸 JPG、STEP `SX-PCB-5` 一致：**50 × 14 mm** 外包络；DWG 标注 **1.20 mm** 板厚、**2 × Ø3.10 mm** 端孔。DWG 异形轮廓和孔位已初步迁入 KiCad。 | 对照原生 mm CAD 复核 DXF 单位/转换并确认 datum；将 Ø3.10 钻孔及双用途触点 pad 结构在极性、电镀与接触方案确认后实现。 |
-| 电芯规格 | 工厂 TXT 写 **1 节 18500**；STEP `DC-18650-SX` 的模型约 **18 × 18 × 50 mm**，支持 18500 尺寸级，但节点名字写 18650。先前项目简述仍写 18650。 | 以已打样样机电芯标签或 BOM 决定最终 SKU、化学体系、保护形态、端子与带包膜尺寸；批准后同步规范、STEP 名称和 KiCad 机械域。 |
-| 电池触点 | 工厂 TXT 明确写两个固定孔也用作电池正负触点；DWG 给出两个 Ø3.10 mm 孔及同心约 Ø5 mm 圆形特征。 | 保留两个孔的机械参考；极性、镀层/焊盘结构、螺钉/垫圈、接触压力、电流能力、绝缘及短路保护仍需确定。没有把尺寸图等同于已验证触点设计。 |
-| 外壳与装配 | 用户确认上传的外壳零件 CAD 是设计师确认设计，且零件已打样并装配外壳。工厂 STEP `SX-DB-4` 网格包络 **39.80 × 22.50 × 90.494 mm**。 | 将确认装配作为 Agent 后续机械对齐源；外壳已装配不等于当前 Agent PCB、电芯触点、电机已通过装配验证。导入完整装配坐标并测板/壳/盖/电芯的真实间隙与公差。 |
-| CAD 组件/变体 | 设计师 ZIP 内 CAD/DWG/STEP 是确认设计稿。文件可能表示不同外壳/盖/零件变体；不能未经选型就把互斥变体叠为一个装配。 | 对照实际打样件、装配图片及 STEP/FCStd 层级确定工厂样机对应的确切组合与修订；仅在该组合中进行 fit 检查。 |
-| 电机 | 工厂功能 TXT 写 **3.3 V 电机**；完整 MPN、实际外形与电流参数未确认。 | 提取已确认 CAD 的电机/齿轮箱位置和外形；向设计师/工厂核实 MPN、允许电压、启动/堵转电流、力矩、占空比与安装基准。按 1S 电芯满电电压校核驱动。 |
-| 输出轴/联轴器 | 机械 CAD 提供装配几何输入；对本项目 PCB 的正式轴线 datum 和接口公差尚未整理。 | 从所选确认装配提取轴线、轴向高度、耦合尺寸、旋向和公差；不从 Agent 预览图估算。 |
-| 锁体金属与 RF | 设计师确认外壳 CAD 存在且外壳已装配；射频天线禁布/间距、金属覆盖和非金属窗口要求未定。 | 用所选装配建立 `METAL_LOCKBODY_ZONE`；BLE/NFC 天线具体边界与净空仍须器件天线资料、外壳材料和测试输入。 |
-| 充电、服务与可选模块 | 尚无确认是否在机充电、USB-C、服务口或 NFC/键盘/指纹 daughterboard 的组合。 | 保持接口与功能选择 TBD；不因为 Agent 测试架构预留就视为产品需求。 |
-| PCB 工艺 | 4 层是用户偏好/评估方向，不是已经冻结的板厂工艺。 | 板厚以 DWG 的 1.20 mm 为 prototype source input；铜厚、板厂公差、层叠和可制造性在后续评审确认。 |
+| Sampled battery SKU | **TBD** (factory TXT says 18500; prior brief says 18650; STEP label/geometry conflict) | Read sample label/BOM; capture installed length/diameter, sleeve, terminals and protection. |
+| Battery contacts | **TBD** | Confirm polarity, material/plating, preload, current, screw/washer stack, insulation and short-circuit protection. |
+| PCB contour and datums | Source-derived 14 × 50 mm contour is in KiCad; native-mm datum check still open | Verify against clean native source/export before drills/pads or fabrication outputs. |
+| Enclosure variant and assembly datums | User confirms designer parts sampled and assembled | Match exact CAD variant/revision to sample; establish coordinate transform from physical assembly. |
+| Motor, gearbox and shaft | **TBD** | Obtain exact model, envelope, mounting face, output axis, coupler, voltage/current/torque and stall limits. |
+| Metal and RF/NFC regions | **TBD** | Derive from selected assembled CAD/material and antenna/coil data. |
+| Tolerance and clearance stack | **Not verified** | Measure/inspect board, cell, contacts, motor, walls, cover travel and assembly tolerances in one datum system. |
 
-## 设计师确认稿与 Agent PCB 文件的边界
+## Mandatory KiCad labels
 
-- 设计师 ZIP 内 CAD/DWG/STEP 以及已确认的工厂 prototype 文件包是设计输入。报告中的模型名称、网格边界和图纸尺寸分别记录，不能把命名当成 SKU，也不能把 tessellated AABB 当成装配公差。
-- 上一 session 继承的 KiCad 板框（17.5 × 60 mm）、区域图形和 preview 是 Agent 能力测试/提案。它们应逐项根据确认 CAD 调整；其旧尺寸和区域位置不具有产品权威性。
-- 用户确认外壳零件已打样并装配；Agent 还需要将 PCB、触点、电芯、电机与这套确认外壳做 CAD 对齐。不能据“外壳已组装”推断新的 PCB 已 fit。
-- 详细来源链、解析尺寸、DWG 单位警告、STEP 网格包络及电池差异记录在 [`FACTORY_PROTOTYPE_GEOMETRY_REPORT.md`](FACTORY_PROTOTYPE_GEOMETRY_REPORT.md) 与 [`CAD_SOURCE_RECONCILIATION.md`](CAD_SOURCE_RECONCILIATION.md)。
+`BATTERY_KEEP_OUT`, `BATTERY_CONTACT_ZONE`, `PCB_MAX_OUTLINE`, `MOTOR_GEARBOX_ZONE`, `SHAFT_AXIS`, `NFC_ANTENNA_ZONE`, `METAL_LOCKBODY_ZONE`, `SERVICE_ACCESS_ZONE`, `NO_COMPONENT_ZONE`.
 
-## Agent 继续工作的顺序建议
-
-1. 核对已迁入 KiCad 的 DWG 异形 Edge.Cuts、datum 与轴向映射，取得干净原生 mm CAD复核；然后按批准的 3.1 mm 孔/双用途触点设计建立真实钻孔与 pad。
-2. 从用户确认且已经打样装配的外壳 CAD/样件中确定对应装配变体与修订，提取 PCB 相对外壳、盖、电芯、电机/轴的变换与空间边界；用实物装配和公差数据交叉核对。
-3. 在 KiCad 机械层建立设计师源轮廓及接触点参考，重新摆放必需的机械标签和 Agent 区域提案；将源几何与 Agent 未经确认的 RF、电气分区明确分层。
-4. 取得电芯实物/BOM、电机 MPN/参数和触点方案后，再进入真正的电气符号/网表、器件选择、RF/供电布局及公差审查。
-
-所有未知的电气数值、触点性能、天线净空和未验证装配间隙继续标 `TBD`。不声称量产、投板、电气安全或硬件验证完成。
+The current zones are planning annotations, not proven clearances. No product-fit or fabrication claim is made.

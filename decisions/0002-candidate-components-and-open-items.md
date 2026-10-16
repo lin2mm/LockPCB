@@ -21,12 +21,12 @@
 - `docs/NETLIST_DRAFT.csv` is a block-level connection intent, not a netlist or connected schematic.
 - `TP1`–`TP7` are proposed accessible points for VBAT, GND, +3V3, SWDIO, SWCLK, motor-fault and motor-current sense. The latter two are conditional on driver capability; actual test-pad geometry/placement is TBD.
 - Prior pin/net records also suggest optional motor fault/current feedback, lock-position and door-state sensing, tamper, and optional NFC/keypad/fingerprint interfaces. These are now represented as logical candidates in `docs/PINOUT_DRAFT.csv` / `docs/NETLIST_DRAFT.csv`; they do not commit features, hardware, pin assignments, or firmware.
-- A historic CAD handoff records an external shell envelope. Product/revision match and internal clearance are unconfirmed, so no board outline or mechanical `TBD` was changed. See [`../docs/CAD_SOURCE_RECONCILIATION.md`](../docs/CAD_SOURCE_RECONCILIATION.md).
+- Current designer-source facts and the Agent-derived board outline are recorded only in [`../docs/MECHANICAL_SOURCE_BASELINE.md`](../docs/MECHANICAL_SOURCE_BASELINE.md). Do not infer internal clearance or fit from an external shell envelope.
 - The schematic uses annotated block and signal-intent text only. It is not an ERC-cleared electrical circuit; CI reports this status explicitly.
 
 ## Six blocking questions (do not invent answers)
 
-1. Exact 18650 cell/holder model and its mechanical/electrical limits.
+1. Exact sampled cell/holder identity (18500 vs 18650) and its mechanical/electrical limits.
 2. Maximum PCB length, width and thickness.
 3. Motor model, rated voltage, startup and stall current.
 4. Motor shaft datum and top gearbox dimensions/coupler.
