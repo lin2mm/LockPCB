@@ -1,35 +1,39 @@
 # Project State — matchbox-smart-lock-pcb
 
-- Updated: 2026-10-16
-- Status: PRE-CAD / KiCad source skeleton + mechanical placeholders + block-level architecture intent
-- Authoritative source: GitHub repository `lin2mm/LockPCB`, current Arena branch `arena/3b84c22f-lockpcb`
-- Workspace note: this environment checkout is `/home/user/LockPCB`; requested `/home/user/smart-lock-pcb/` did not exist.
-- Main merge: not performed and must not be performed during this session.
+Updated: 2026-10-16. Status: PRE-CAD / KiCad source skeleton + mechanical placeholders + block-level electrical intent.
 
-## Current engineering state
+## Source / scope
 
-- KiCad source files: `pcb/LockPCB.kicad_pro`, `pcb/LockPCB.kicad_sch`, `pcb/LockPCB.kicad_pcb`.
-- PCB: four-copper-layer starting preference, provisional 17.5 × 60 mm board outline, mechanical/user-layer labels and one native temporary no-component keepout. No footprints, pads, copper pours, nets or tracks. All mechanical envelopes except the illustrative starting board rectangle are unscaled placeholders.
-- Schematic: architecture text/block and signal-intent annotations only; no symbols, connected pins, or electrical netlist. It is not a completed schematic.
-- Candidate architecture and power budget: `docs/POWER_TREE_AND_BUDGET.md`, `docs/CORE_ZONING.md`; no numeric loads, MPNs or footprints chosen.
-- Draft interfaces: `docs/BOM_DRAFT.csv`, `docs/PINOUT_DRAFT.csv`, `docs/NETLIST_DRAFT.csv`.
-- CI: `.github/workflows/kicad-ci.yml`, targeting KiCad 8.x on Ubuntu 24.04, runs version guard, ERC, DRC, placeholder parity, netlist unconnected marker check, structural checks and SVG exports; uploads artifacts on failure. Actions results must be checked after push.
-- Decisions: `decisions/`; six input blockers in decision 0002.
+- GitHub private repository: `lin2mm/LockPCB`; work only on `arena/3b84c22f-lockpcb`.
+- The assigned checkout is `/home/user/LockPCB`; `/home/user/smart-lock-pcb/` is absent.
+- GitHub branch is authoritative for KiCad/electrical source. Google Drive remains handoff/reference/feedback/backup.
+- No merge to `main`. No firmware flashing, purchasing, fabrication, or real hardware testing.
 
-## Blockers
+## Engineering state
 
-1. Final 18650 model and holder/contact.
-2. Maximum PCB length, width and thickness.
-3. Motor part/rated voltage/start and stall current.
-4. Shaft axis datum and top gearbox/coupler dimensions.
-5. Whether USB-C board charging is required.
-6. Metal enclosure/lockbody geometry.
+- KiCad project: `pcb/LockPCB.kicad_pro`, `.kicad_sch`, `.kicad_pcb`.
+- PCB: four-copper-layer starting preference; provisional 17.5 × 60 mm nominal outline and 20 × 65 mm review envelope. No components, pads, copper pours, nets, or tracks. All required mechanical labels are present; most zone graphics are not-to-scale placeholders. No verified mechanical fit or fabrication readiness.
+- Schematic: A3 text-only architecture/signal-intent sheet. It lists 24 planning RefDes and 31 logical signal names but has no symbols, assigned pins, or connected electrical nets. Intent parity must not be reported as circuit/netlist completion.
+- BOM MPNs and footprints remain TBD. Existing candidates are recommendations only. The interface draft now preserves conditional battery protection, motor sleep/fault/current feedback, lock/door/tamper sensing, and optional NFC/keypad/fingerprint interfaces. Wi-Fi and USB-C charging remain outside the baseline by default.
+- Technical docs: `docs/POWER_TREE_AND_BUDGET.md`, `docs/CORE_ZONING.md`, `docs/MECHANICAL_INPUTS.md`, CSV drafts, decision records, and `docs/CAD_SOURCE_RECONCILIATION.md`.
+- Earlier Drive CAD records include a candidate aluminum shell whose handoff states an external envelope of 39.800 × 22.500 × 90.500 mm. Product/revision match and usable internal clearance are unconfirmed; the measurement does not replace any current `TBD` or imply board fit. Drive source inventory and safe-use restrictions are documented in `docs/CAD_SOURCE_RECONCILIATION.md`.
+- Visual preview: [engineering overview on GitHub](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/docs/previews/engineering-overview.png). It is illustrative only, not to scale.
 
-No manufacturing release, hardware validation, real electrical closure, or “ready to fabricate” claim is permitted.
+## Blocking inputs
 
-## Checks
+1. Exact 18650 cell and holder/contact, including true envelope and protection approach.
+2. Verified maximum PCB length, width, thickness, and internal housing clearance.
+3. Motor model, operating voltage, startup/stall current, duty and torque requirements.
+4. Gearbox/coupler/output-shaft geometry and axis datum.
+5. Whether USB-C/on-board charging is required.
+6. Confirmation and current geometry of enclosure/lockbody metal, antenna area, service access, and product revision.
 
-- Local KiCad CLI is not installed in the workspace. Static S-expression/CSV/script checks pass locally.
-- GitHub Actions run `38880076795` on source checkpoint `b2ce879b6615be3a9b5dfafd637b4e9bd756aa0a` completed successfully: pinned KiCad 8 install/version gate, ERC, DRC, netlist export, schematic-intent/BOM/test-point checks, no-unconnected marker check (N/A because the schematic has no electrical pins), structural placeholder check and SVG exports all succeeded.
-- Reports/renderings artifact: `kicad-reports-38880076795` (artifact id `12037281019`), accessible from the Actions run.
-- This is a successful PRE-CAD placeholder validation, not evidence of electrical completion, fit, hardware validation or fabrication readiness. Never merge main.
+Unknown dimensions and values remain TBD. No manufacturing release, electrical closure, or hardware validation is claimed.
+
+## Validation
+
+- Local KiCad CLI is unavailable. Local static checks passed on source commit `6b22eba`: placeholder structure, CSV/schematic intent parity (24 RefDes / 31 names), MPN/footprint TBD checks, and balanced S-expressions.
+- GitHub Actions run [38884372990](https://github.com/lin2mm/LockPCB/actions/runs/38884372990) passed on commit `6b22eba81f3655b8db104ce467c3e5e99ae5bc13`. KiCad 8 install/version gate, ERC, DRC, netlist export, intent parity, structure checks, and SVG exports all completed. The no-electrical-pins status remains N/A by design. CI success validates only this PRE-CAD placeholder state.
+- Artifact: `kicad-reports-38884372990` (artifact ID `12038796903`), available from the Actions run page.
+
+Never merge `main`; push only to `arena/3b84c22f-lockpcb`.

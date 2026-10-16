@@ -1,31 +1,34 @@
-# Session Handoff — Matchbox Smart Lock PCB
+# Session Handoff — LockPCB
 
-Updated 2026-10-16. See `PROJECT_STATE.md` for current files and blockers; see `docs/cross-session-protocol.md` for operating rules.
+Updated 2026-10-16. See `PROJECT_STATE.md` for current state and blockers, `docs/cross-session-protocol.md` for operating rules, and `docs/CAD_SOURCE_RECONCILIATION.md` for Drive/index and legacy CAD findings.
 
-## Source/workspace reconciliation
+## Current source state
 
-- GitHub origin: `https://github.com/lin2mm/LockPCB.git`.
-- At start, remote `main` was `52bd23f1a57e35f30c84520347ed3915241bab5a`; remote `arena/3b84c22f-lockpcb` did not yet exist.
-- Local checkout branch: `arena/3b84c22f-lockpcb`, based on the same commit. It had uncommitted work from the prior Arena turn (`README.md`, `docs/`, `pcb/`) not present in remote `main`; this work was preserved and extended, not discarded.
-- User-specified `/home/user/smart-lock-pcb/` is absent in this runtime. The actual assigned repository checkout is `/home/user/LockPCB`; no duplicate directory or copy was created.
-- Do not merge `main`. Commit/push only `arena/3b84c22f-lockpcb`.
+- Repository: private GitHub `lin2mm/LockPCB`.
+- Work branch: `arena/3b84c22f-lockpcb`; do not change branch, merge `main`, or push to another branch.
+- Current engineering checkpoint: commit `6b22eba81f3655b8db104ce467c3e5e99ae5bc13` (`Reconcile Drive CAD history and expand interface intent`).
+- The earlier visual overview is embedded in the README and directly linked to its GitHub blob path.
 
-## Implemented in this round
+## Work completed this continuation
 
-- KiCad project skeleton (`.kicad_pro`, `.kicad_sch`, `.kicad_pcb`) with explicit PRE-CAD warning.
-- Four-layer preference placeholder and required named mechanical zones, board outline, functional current/RF sketches, plus provisional native no-component keepout.
-- Power tree/equation budget, functional zone comparison, candidate BOM, logical pin table, block-level net intent and decisions.
-- KiCad 8-major guarded GitHub Actions workflow with ERC, DRC, parity/unconnected checks, render exports, and always-uploaded reports.
-- Local KiCad CLI is unavailable; report only actual static results locally and defer ERC/DRC evidence to Actions.
+- Reviewed project Drive folders and the `smart-lock-pcb-pre-cad-2026-10-16.zip` archive. Its sole project-specific index is `docs/learning-index.md`; the archive has design documents and drafts but no KiCad or FreeCAD CAD project files.
+- Searched Drive index names and relevant CAD records. General Arena/GTM indexes and CAD folders are outside the PCB project root. A candidate shell STEP plus a main FreeCAD assembly and body/cover child files were found elsewhere. Historical records state an external envelope of 39.800 × 22.500 × 90.500 mm and contain BREP-level checks, but product/revision identity and PCB/battery/motor fit are not confirmed. Old variant restrictions are documented; no old geometry was used to set current PCB dimensions.
+- Added `docs/CAD_SOURCE_RECONCILIATION.md`, including source links, project-vs-cross-project index distinctions, prior CAD inventory and conservative treatment.
+- Expanded only the block-level intent: conditional battery protection; motor sleep/fault/current feedback; lock/door/tamper sensor interfaces; optional NFC, keypad, fingerprint, status and accessory signals. All pins, footprints, MPNs, ratings and fit remain TBD/optional. No components or electrical connections were introduced.
+- Extended the schematic intent list to 31 names and the BOM placeholder inventory to 24 references; upgraded the sheet to A3 for legibility. CI testpoint-presence coverage now checks TP1–TP7.
+- Added direct README links to the GitHub PNG preview, updated mechanical/power/zoning documents, and recorded the new history in the decision log.
 
-## Latest validation and continuation
+## Validation and status
 
-- Source checkpoint: `b2ce879b6615be3a9b5dfafd637b4e9bd756aa0a` on `arena/3b84c22f-lockpcb`.
-- GitHub Actions run `38880076795` succeeded on that checkpoint. KiCad 8.0 release PPA install/version gate, `kicad-cli sch erc`, `kicad-cli pcb drc`, netlist export, placeholder intent/BOM/test-point checks, structural checks and SVG export steps all completed successfully.
-- Artifact `kicad-reports-38880076795` (id `12037281019`) contains ERC, DRC, netlist, logs and renderings. The unconnected-net result is explicitly N/A because the schematic has no electrical symbols/pins yet.
-- Initial CI failures were preserved in Actions history and corrected: base Ubuntu supplied KiCad 7; then KiCad 8 exposed unsupported layer identifiers. No violations were silenced.
+- Local static checks passed: block-level parity (24 planning RefDes / 31 names), MPN and footprint TBD requirements, PCB structure, and S-expression balance.
+- GitHub Actions run [38884372990](https://github.com/lin2mm/LockPCB/actions/runs/38884372990) succeeded on the engineering checkpoint above. ERC, DRC, KiCad 8 version gate, netlist export, intent checks, structure checks, and SVG exports all completed. As before, the schematic has no electrical pins, so the unconnected-net test correctly reports N/A—not circuit completion.
+- Artifact `kicad-reports-38884372990` (ID `12038796903`) is attached to that Actions run. Local log/artifact retrieval had an EOF from GitHub's results receiver, but the Actions UI reports the run and artifact upload as successful.
+- The local KiCad CLI is unavailable; no local ERC/DRC claim is made.
+- No fabrication readiness, fit, or hardware test is claimed. No merge to `main`.
 
-Continue next:
-1. Keep schematic references/net labels explicitly block-level until actual components and pin assignments are approved.
-2. Request the six blockers in `decisions/0002-candidate-components-and-open-items.md` only when needed; otherwise keep TBD placeholders.
-3. Never merge `main` in this session.
+## Next recommended steps
+
+1. Confirm whether the historical FreeCAD shell/assembly and its external envelope belong to the exact current product revision. If confirmed, coordinate the housing, cell/contact, motor/gearbox, shaft axis, service opening and PCB in a common CAD assembly before changing any placeholder dimensions.
+2. Obtain actual cell/holder/contact and motor/gearbox data; these dominate protection, current, thermal and size decisions.
+3. Freeze the baseline optional feature set before assigning MCU pins; keep door/lock/tamper sensing and motor feedback as candidate interfaces until product requirements and driver choice are clear.
+4. Only then move from annotated block intent to actual symbols, pin assignments, a real schematic/netlist, and component/footprint review.
