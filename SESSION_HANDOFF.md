@@ -18,9 +18,14 @@ Updated 2026-10-16. See `PROJECT_STATE.md` for current files and blockers; see `
 - KiCad 8-major guarded GitHub Actions workflow with ERC, DRC, parity/unconnected checks, render exports, and always-uploaded reports.
 - Local KiCad CLI is unavailable; report only actual static results locally and defer ERC/DRC evidence to Actions.
 
-## Continue next
+## Latest validation and continuation
 
-1. Check the pushed branch's GitHub Actions run and report the actual version/ERC/DRC/custom check statuses; fix real failures without suppressing violations.
-2. Keep schematic references/net labels explicitly block-level until actual components and pin assignments are approved.
-3. Request the six blockers in `decisions/0002-candidate-components-and-open-items.md` only when needed; otherwise keep TBD placeholders.
-4. Never merge `main` in this session.
+- Source checkpoint: `0115b70578e9f855f8a2a5013f23091d64bd0aef` on `arena/3b84c22f-lockpcb`.
+- GitHub Actions run `38878409830` succeeded on that checkpoint. KiCad 8.0 release PPA install/version gate, `kicad-cli sch erc`, `kicad-cli pcb drc`, netlist export, placeholder intent/BOM/test-point checks, structural checks and SVG export steps all completed successfully.
+- Artifact `kicad-reports-38878409830` (id `12036765992`) contains ERC, DRC, netlist, logs and renderings. The unconnected-net result is explicitly N/A because the schematic has no electrical symbols/pins yet.
+- Initial CI failures were preserved in Actions history and corrected: base Ubuntu supplied KiCad 7; then KiCad 8 exposed unsupported layer identifiers. No violations were silenced.
+
+Continue next:
+1. Keep schematic references/net labels explicitly block-level until actual components and pin assignments are approved.
+2. Request the six blockers in `decisions/0002-candidate-components-and-open-items.md` only when needed; otherwise keep TBD placeholders.
+3. Never merge `main` in this session.
