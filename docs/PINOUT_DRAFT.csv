@@ -1,0 +1,16 @@
+logical_signal,proposed_endpoint,module_pin_or_connector_pin,direction,voltage_domain,priority,status,notes
+VBAT_1S,BT1 to U2/U3,TBD,power input,1S battery rail,required,TBD,Cell and protection limits TBD
++3V3_MAIN,U2 to U1/U4/J4,TBD,power output,3.3 V regulated,candidate,TBD,Converter selection/current and power sequencing TBD
+GND,all blocks,TBD,power return,common reference,required,TBD,Return-current/plane strategy needs motor/RF layout review
+MOTOR_A,U3 to M1,TBD,motor output,motor rail,required,TBD,Motor driver output; no MCU direct connection
+MOTOR_B,U3 to M1,TBD,motor output,motor rail,required,TBD,Motor driver output; no MCU direct connection
+MOTOR_PWM,U1 to U3,TBD,logic output,3.3 V candidate,required,TBD,Timer/PWM assignment TBD after module pin map
+MOTOR_EN,U1 to U3,TBD,logic output,3.3 V candidate,required,TBD,Safe default/reset state TBD
+I2C_SDA,U1 to U4/J4,TBD,bidirectional,3.3 V candidate,optional,TBD,Pull-ups/addressing and optional bus loading TBD
+I2C_SCL,U1 to U4/J4,TBD,logic output,3.3 V candidate,optional,TBD,Pull-ups and bus speed TBD
+SWDIO,J3 to U1,TBD,bidirectional,3.3 V candidate,service,TBD,Debug/programming header interface only; no firmware work in scope
+SWCLK,J3 to U1,TBD,logic input,3.3 V candidate,service,TBD,Debug/programming header interface only
+RESET_N,J3 to U1,TBD,logic input,3.3 V candidate,service,TBD,Reset pull/network TBD
+VBAT_SENSE,divider to U1 ADC,TBD,analog input,scaled battery,optional,TBD,Divider values and ADC pin TBD; account for sleep leakage
+UART_TX,J3 to U1,TBD,logic output,3.3 V candidate,optional,TBD,Debug console optional; not committed
+UART_RX,J3 to U1,TBD,logic input,3.3 V candidate,optional,TBD,Debug console optional; not committed

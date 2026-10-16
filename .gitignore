@@ -1,0 +1,9 @@
+# KiCad local/editor state
+*.kicad_prl
+*-backups/
+fp-info-cache
+
+# Generated CI reports and Python bytecode
+reports/
+__pycache__/
+*.py[cod]

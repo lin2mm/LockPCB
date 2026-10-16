@@ -1,0 +1,42 @@
+name: KiCad validation
+
+on:
+  push:
+    branches:
+      - "arena/**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kicad:
+    name: KiCad 8 ERC / DRC / intent checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      KICAD_EXPECTED_MAJOR: "8"
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install Ubuntu 24.04 KiCad package (major guarded below)
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y kicad
+
+      - name: Run ERC, DRC, netlist, structure, parity and exports
+        run: bash ci/run_ci.sh
+
+      - name: Upload reports and renderings, including on failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kicad-reports-${{ github.run_id }}
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,16 @@
+signal,source_block,destination_blocks,domain,status
+VBAT_1S,BT1 battery interface,"U2 buck-boost; U3 motor driver",power rail,intent only
++3V3_MAIN,U2 buck-boost,"U1 BLE module; U4 optional secure element; J4 optional expansion",power rail,intent only
+GND,battery return,"U1; U2; U3; U4; J3; J4",power return,intent only
+MOTOR_A,U3 motor driver,M1 motor,motor output,intent only
+MOTOR_B,U3 motor driver,M1 motor,motor output,intent only
+MOTOR_PWM,U1 BLE MCU,U3 motor driver,3.3 V logic,intent only
+MOTOR_EN,U1 BLE MCU,U3 motor driver,3.3 V logic,intent only
+I2C_SDA,U1 BLE MCU,"U4 secure element; J4 optional expansion",3.3 V logic,intent only
+I2C_SCL,U1 BLE MCU,"U4 secure element; J4 optional expansion",3.3 V logic,intent only
+SWDIO,J3 service connector,U1 BLE MCU,debug,intent only
+SWCLK,J3 service connector,U1 BLE MCU,debug,intent only
+RESET_N,J3 service connector,U1 BLE MCU,3.3 V logic,intent only
+VBAT_SENSE,Battery divider,U1 BLE MCU ADC,analog,intent only
+UART_TX,J3 service connector,U1 BLE MCU,debug,intent only
+UART_RX,J3 service connector,U1 BLE MCU,debug,intent only

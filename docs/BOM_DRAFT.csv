@@ -1,0 +1,16 @@
+refdes,qty,block,candidate_or_description,manufacturer_part_number,footprint,status,notes
+BT1,1,battery,1S 18650 cell/contact system; exact cell/holder TBD,TBD,TBD,placeholder,Cell chemistry protection contacts and interface must be confirmed
+U1,1,BLE MCU,Certified BLE module based on nRF52840 as candidate,TBD,TBD,candidate,Module certification antenna geometry I/O map and supply range TBD
+U2,1,logic regulator,3.3 V buck-boost converter candidate,TBD,TBD,candidate,Set output current quiescent current and input range after load budget
+U3,1,motor driver,1S brushed DC H-bridge; DRV8213-class candidate,TBD,TBD,candidate,Check motor stall current VM range thermal performance and control interface
+U4,1,security,ATECC608C-class secure element optional,TBD,TBD,optional candidate,Provisioning and package variant TBD; DNP until approved
+M1,1,actuator,Low-voltage brushed DC geared motor candidate,TBD,TBD,placeholder,Exact rated voltage startup/stall current gearbox and shaft are blockers
+J1,1,battery interface,Battery contact or connector TBD,TBD,TBD,placeholder,Mechanical arrangement polarity retention and current capacity TBD
+J2,1,motor interface,Motor/gearbox interface TBD,TBD,TBD,placeholder,Connector or direct solder; mechanical strain relief TBD
+J3,1,service,Debug/service access interface TBD,TBD,TBD,placeholder,SWD and any serial/charging function TBD
+J4,1,expansion,Optional feature daughterboard interface TBD,TBD,TBD,optional placeholder,Feature set voltage pinout and connector envelope TBD
+TP1,1,test point,VBAT_1S,TBD,TBD,planned,Test point type and access TBD
+TP2,1,test point,GND,TBD,TBD,planned,Test point type and access TBD
+TP3,1,test point,+3V3_MAIN,TBD,TBD,planned,Test point type and access TBD
+TP4,1,test point,SWDIO,TBD,TBD,planned,Test point type and access TBD
+TP5,1,test point,SWCLK,TBD,TBD,planned,Test point type and access TBD
