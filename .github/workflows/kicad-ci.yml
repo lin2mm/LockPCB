@@ -50,6 +50,10 @@ jobs:
             fi
           done
 
+      - name: Annotate failing command details
+        if: always()
+        run: bash ci/publish_ci_errors.sh
+
       - name: Upload reports and renderings, including on failures
         if: always()
         uses: actions/upload-artifact@v4
