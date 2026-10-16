@@ -32,6 +32,24 @@ jobs:
       - name: Run ERC, DRC, netlist, structure, parity and exports
         run: bash ci/run_ci.sh
 
+      - name: Publish concise diagnostics to the check summary
+        if: always()
+        run: |
+          echo '## KiCad CI summary' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f reports/summary.txt ]; then
+            echo '```text' >> "$GITHUB_STEP_SUMMARY"
+            cat reports/summary.txt >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          for f in reports/version-gate.log reports/erc.log reports/drc.log reports/netlist_export.log reports/pcb_structure.log reports/schematic_intent_and_unconnected.log; do
+            if [ -f "$f" ]; then
+              echo "### $f" >> "$GITHUB_STEP_SUMMARY"
+              echo '```text' >> "$GITHUB_STEP_SUMMARY"
+              tail -n 40 "$f" >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+
       - name: Upload reports and renderings, including on failures
         if: always()
         uses: actions/upload-artifact@v4
