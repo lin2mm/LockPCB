@@ -20,9 +20,9 @@ Updated 2026-10-16. See `PROJECT_STATE.md` for current files and blockers; see `
 
 ## Latest validation and continuation
 
-- Source checkpoint: `40fa8b878deae4de553d28ddf1be33d914e42fcb` on `arena/3b84c22f-lockpcb`.
-- GitHub Actions run `38878777823` succeeded on that checkpoint. KiCad 8.0 release PPA install/version gate, `kicad-cli sch erc`, `kicad-cli pcb drc`, netlist export, placeholder intent/BOM/test-point checks, structural checks and SVG export steps all completed successfully.
-- Artifact `kicad-reports-38878777823` (id `12036233440`) contains ERC, DRC, netlist, logs and renderings. The unconnected-net result is explicitly N/A because the schematic has no electrical symbols/pins yet.
+- Source checkpoint: `b2ce879b6615be3a9b5dfafd637b4e9bd756aa0a` on `arena/3b84c22f-lockpcb`.
+- GitHub Actions run `38880076795` succeeded on that checkpoint. KiCad 8.0 release PPA install/version gate, `kicad-cli sch erc`, `kicad-cli pcb drc`, netlist export, placeholder intent/BOM/test-point checks, structural checks and SVG export steps all completed successfully.
+- Artifact `kicad-reports-38880076795` (id `12037281019`) contains ERC, DRC, netlist, logs and renderings. The unconnected-net result is explicitly N/A because the schematic has no electrical symbols/pins yet.
 - Initial CI failures were preserved in Actions history and corrected: base Ubuntu supplied KiCad 7; then KiCad 8 exposed unsupported layer identifiers. No violations were silenced.
 
 Continue next:

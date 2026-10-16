@@ -30,6 +30,6 @@ No manufacturing release, hardware validation, real electrical closure, or “re
 ## Checks
 
 - Local KiCad CLI is not installed in the workspace. Static S-expression/CSV/script checks pass locally.
-- GitHub Actions run `38878777823` on source checkpoint `40fa8b878deae4de553d28ddf1be33d914e42fcb` completed successfully: pinned KiCad 8 install/version gate, ERC, DRC, netlist export, schematic-intent/BOM/test-point checks, no-unconnected marker check (N/A because the schematic has no electrical pins), structural placeholder check and SVG exports all succeeded.
-- Reports/renderings artifact: `kicad-reports-38878777823` (artifact id `12036233440`), accessible from the Actions run.
+- GitHub Actions run `38880076795` on source checkpoint `b2ce879b6615be3a9b5dfafd637b4e9bd756aa0a` completed successfully: pinned KiCad 8 install/version gate, ERC, DRC, netlist export, schematic-intent/BOM/test-point checks, no-unconnected marker check (N/A because the schematic has no electrical pins), structural placeholder check and SVG exports all succeeded.
+- Reports/renderings artifact: `kicad-reports-38880076795` (artifact id `12037281019`), accessible from the Actions run.
 - This is a successful PRE-CAD placeholder validation, not evidence of electrical completion, fit, hardware validation or fabrication readiness. Never merge main.
