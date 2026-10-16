@@ -1,5 +1,5 @@
 refdes,qty,block,candidate_or_description,manufacturer_part_number,footprint,status,notes
-BT1,1,battery,1S 18650 cell/contact system; exact cell/holder TBD,TBD,TBD,placeholder,Cell chemistry protection contacts and interface must be confirmed
+BT1,1,battery,Recommend evaluate Molicel INR-18650-P28A; Samsung INR18650-30Q alternative; exact cell/holder TBD,TBD,TBD,proposed candidate,Unapproved; compare datasheet current capacity authenticity protection format and holder envelope before selection
 U1,1,BLE MCU,Certified BLE module based on nRF52840 as candidate,TBD,TBD,candidate,Module certification antenna geometry I/O map and supply range TBD
 U2,1,logic regulator,3.3 V buck-boost converter candidate,TBD,TBD,candidate,Set output current quiescent current and input range after load budget
 U3,1,motor driver,1S brushed DC H-bridge; DRV8213-class candidate,TBD,TBD,candidate,Check motor stall current VM range thermal performance and control interface

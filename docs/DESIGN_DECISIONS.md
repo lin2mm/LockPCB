@@ -27,3 +27,13 @@
 - **工程增量**：添加 `.kicad_sch` 文字式架构/信号意图草案、BOM/逻辑 pin/net CSV、功耗等式、功能分区说明、KiCad 8 主版本守卫的 CI 与报告脚本、`decisions/` 日志。原理图尚无真实符号/引脚连接；CI 对此显式报告 N/A/placeholder，不宣称 electrical parity 或硬件验证。
 - **工作区差异**：用户指定的 `/home/user/smart-lock-pcb/` 在该执行环境不存在。Agent 在平台提供的 `/home/user/LockPCB` checkout 中继续；远端 `main` 与本地 HEAD 相同，远端 session 分支尚未存在。本工作树先前已有未提交的本地 PCB/文档内容，未用外部目录覆盖。
 - **仍阻塞的六项**：准确 18650 型号；PCB 最大长/宽/厚；电机型号/额定电压/启动及堵转电流；轴线和顶部齿轮尺寸；USB-C 板载充电是否需要；外壳金属件范围。按用户要求以 placeholder 继续，不等待输入。
+
+## 2026-10-16 — Agent 对六项阻塞输入的推荐默认值
+
+- **Cell 候选**：Molicel INR-18650-P28A 作为高放电能力评估候选，Samsung INR18650-30Q 作为容量/供货替代比较；最终cell、包膜/接点/保护仍 TBD，不下单。以约 18.6 × 65.2 mm 的裸电芯近似体积作空间提示，再增补 holder 和装配间隙；不得当作最终包络。
+- **Board envelope**：Edge.Cuts 继续用 17.5 × 60 mm 名义目标，`PCB_MAX_OUTLINE` 改为 20 × 65 mm 临时 review envelope；推荐先按 1.2 mm 板厚评估。均非用户硬约束，shell 测量后冻结。
+- **Motor**：首选评估 3 V-class brushed geared motor，直接适配 1S VBAT；电流必须按最大cell电压下startup/stall数据校核，驱动器初筛peak rating建议至少为验证脉冲电流的 1.5×，仍需热/保护复核。
+- **Mechanism**：先定义 PCB/shell/shaft datum，3 mm D-flat 是输出轴候选而非命令；无 torque、ratio、gearbox drawing 前不画齿形/中心距尺寸。
+- **Charging / metal**：推荐 Rev-A 默认不板载 USB-C，除非在机充电是产品需求；在实际测量前按可能有金属的lock body规划RF/NFC，预留非金属天线窗口，禁止假定具体间隙。
+- **额外建议**：保护/温度/反接策略先于选触点/充电器；电机 jam/stall 要有硬件限流和安全 disable 思路；BLE选认证模块、Wi-Fi默认不进入主板；保留可评估的电机小板方案。
+- **完整理由/风险**：见 `decisions/0004-agent-recommended-defaults.md`。以上均为Agent软建议，不是用户确认事实；原六项继续列为阻塞，CAD与CI可在占位层推进。

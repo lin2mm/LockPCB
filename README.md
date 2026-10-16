@@ -11,4 +11,4 @@
 
 ## 当前状态
 
-**PRE-CAD placeholder 阶段，不可投板。** PCB 边界 17.5 × 60 mm 是评估起点而非最终外形；电池、电机、轴线、金属壳体及各 keepout 边界均未验证。原理图只表达架构与信号意图，未连接 pin-level circuit。ERC/DRC/CI 结果需由 CI 实际运行后确认。
+**PRE-CAD placeholder 阶段，不可投板。** `Edge.Cuts` 17.5 × 60 mm 是首轮 nominal 起点，`PCB_MAX_OUTLINE` 20 × 65 mm 是临时 review envelope；两者都不是最终外形。推荐 1.2 mm 板厚仍待确认。电池、电机、轴线、金属壳体及各 keepout 边界未完成 fit 验证。原理图仅表达架构/信号意图，无 pin-level connectivity。查看 GitHub Actions 获取最新 KiCad ERC/DRC 报告。

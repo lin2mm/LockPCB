@@ -5,14 +5,14 @@ Status: architecture proposal, not an approved electrical design. No components 
 ## Recommended starting power tree
 
 ```text
-1S 18650 (exact cell TBD)
+1S 18650 (evaluate Molicel INR-18650-P28A; exact cell TBD)
   ├─ protection / battery connector / measurement (implementation TBD)
   │   ├─ VBAT_1S ──> motor driver candidate ──> brushed geared motor (direct battery rail preferred)
   │   └─ VBAT_1S ──> 3.3 V buck-boost candidate ──> certified BLE module + logic + optional secure element
   └─ optional charge input: USB-C only if user confirms; charger/power-path TBD
 ```
 
-**Default recommendation:** retain a 1S battery rail, evaluate a low-voltage brushed DC gearmotor and driver that can operate directly from VBAT, and use a dedicated 3.3 V buck-boost rail for BLE/logic. Do not select the converter, driver, protection device, or charger until peak and sleep loads and electrical ratings are known. Direct motor drive avoids a high-power motor boost converter but makes motor voltage range, brownout, current peaks, and EMI constraints decisive.
+**Default recommendation:** retain a 1S battery rail, evaluate a low-voltage brushed DC gearmotor and driver that can operate directly from VBAT, and use a dedicated 3.3 V buck-boost rail for BLE/logic. Evaluate a high-drain cell such as Molicel P28A against a capacity-oriented 30Q alternative once current needs and authentic sourcing are checked. Default to no on-board USB-C charging in the first architecture unless in-device charging is a product requirement. Do not select the converter, driver, protection device, or charger until peak and sleep loads and electrical ratings are known. Direct motor drive avoids a high-power motor boost converter but makes motor voltage range, brownout, current peaks, and EMI constraints decisive.
 
 ## Budget equations (no invented load values)
 
