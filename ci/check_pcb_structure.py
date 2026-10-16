@@ -35,12 +35,12 @@ def main() -> int:
         if layer not in content:
             errors.append(f"Four-layer placeholder stack missing layer {layer}")
     if '"Edge.Cuts"' not in content or "(gr_line (start 0 0)" not in content:
-        errors.append("Edge.Cuts board-outline placeholder not found")
+        errors.append("Edge.Cuts board outline geometry not found")
     if '(keepout ' not in content or '"NO_COMPONENT_ZONE_PLACEHOLDER"' not in content:
         errors.append("Native temporary NO_COMPONENT_ZONE keepout not found")
     if "NOT FOR FABRICATION" not in content and "NOT READY FOR FAB" not in content:
         errors.append("Board must carry a not-for-fabrication warning")
-    result = ("FAIL\n" if errors else "PASS — required KiCad placeholders are present; dimensions remain unverified.\n")
+    result = ("FAIL\n" if errors else "PASS — required mechanical labels/layers and outline primitives are present; this structural check does not verify contour dimensions or fit.\n")
     if errors:
         result += "\n".join(f"ERROR: {e}" for e in errors) + "\n"
     a.report.parent.mkdir(parents=True, exist_ok=True)

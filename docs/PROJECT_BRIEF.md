@@ -3,7 +3,7 @@
 ## 固定事实（本项目约束）
 
 - 目标：室内改装式、免打孔/免布线、极限小型化的“火柴盒门锁”；结构简单是核心卖点。
-- 电源：仅 1 节竖直 18650，电源体系为 1S 锂电池。18650 是名义参考，具体电池型号未定。
+- 电源：单节 1S 锂电。早期产品简述写 18650；设计师确认的工厂功能 TXT 写 18500，STEP 中 `DC-18650-SX` 网格约 18 × 18 × 50 mm，支持 18500 尺寸级。实物样机/BOM 确认前，最终电芯 SKU 仍未关闭。
 - 总体概念：电池仓与长条 PCB 并列；电机、减速齿轮和联轴器位于顶部。
 - BLE 为主；NFC、键盘、指纹、Wi-Fi 是可选模块/子板，尚未定接口/实现。
 - 此阶段只做 PCB 工程；不做固件烧录、打样、下单或真实硬件测试。
@@ -12,7 +12,7 @@
 
 ## 结构化启动基线
 
-- `Edge.Cuts` 首轮工作轮廓：17.5 × 60 mm；`PCB_MAX_OUTLINE` 现在显示 20 × 65 mm 的临时评审包络。二者都来自用户给出的初步评估区间，不是最终外形/硬限制，未完成堆叠、公差或装配验证。板厚建议先按 1.2 mm 评估，仍为 TBD。
+- `Edge.Cuts` 已按设计师确认稿转换的 DWG 轮廓迁入 **14 × 50 mm** 异形外形，孔位参考在 (7,10) 与 (7,47) mm；DWG 标注 1.20 mm 板厚。DXF 转换有告警且单位头为 inch，需在制造前以原生 mm CAD 复核。`PCB_MAX_OUTLINE` 标记该 14 × 50 mm 来源包络；旧 17.5 × 60 / 20 × 65 mm Agent 测试值已废止，不作为产品几何。当前仍未验证与已组装外壳的 PCB fit / tolerance。
 - 板框通过 KiCad `Edge.Cuts` 绘出；同时在 `User.3` 标注 `PCB_MAX_OUTLINE`。
 - 机械区用 KiCad `User.1` 至 `User.9` 独立用户图层表达，并以层内文字标出规定名称；另以 `Edge.Cuts` 表示板框。它们是 PCB 文件中的真实可编辑 KiCad 图形对象，不是截图或外部示意图。`NO_COMPONENT_ZONE` 另有一块 F/B 铜层的 KiCad 原生 keepout，占位范围与 `User.9` 对应；这是未验证的临时规则，不代表已确定最终禁布尺寸。其余区（尤其电池仓区）为机械边界图示，不能当成板内电气 keepout。
 
@@ -32,7 +32,7 @@
 
 ## 验收标准
 
-1. 仓库中存在可由 KiCad 打开的工程与 PCB 文件；板框占位位于 `Edge.Cuts`。
+1. 仓库中存在 KiCad 工程与 PCB 文件；`Edge.Cuts` 是按确认 DWG 转入的 source-derived 轮廓，仍须 native-CAD/fit 验证。
 2. PCB 有独立机械用户图层并分别明确表达：`BATTERY_KEEP_OUT`、`BATTERY_CONTACT_ZONE`、`PCB_MAX_OUTLINE`、`MOTOR_GEARBOX_ZONE`、`SHAFT_AXIS`、`NFC_ANTENNA_ZONE`、`METAL_LOCKBODY_ZONE`、`SERVICE_ACCESS_ZONE`、`NO_COMPONENT_ZONE`。
 3. 所有未确认信息均清楚标记 TBD/placeholder；不将示意尺寸包装成最终规格。
 4. BOM、DRC、制造文件和投板准备状态不虚报；机械尺寸和电机数据缺失时明确标注不可投板。

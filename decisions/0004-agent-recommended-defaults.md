@@ -1,7 +1,7 @@
 # Decision 0004 — Agent Recommendations for the Six Blockers
 
 - Date: 2026-10-16
-- Status: Agent-proposed working defaults, **not user-confirmed product facts**. Continue placeholder work; replace as soon as sourced data arrives.
+- Status: Historical Agent-proposed working defaults, **not user-confirmed product facts**. Superseded where the designer-confirmed factory package provides contrary inputs: use its 14 × 50 mm PCB contour, 1.20 mm thickness callout, and 18500-sized cell model as the current mechanical reference; the actual cell SKU still needs sample/BOM confirmation. The former 17.5 × 60 / 20 × 65 outlines and P28A/30Q choice are not product baseline decisions.
 
 ## 1. 18650 cell
 
