@@ -25,7 +25,7 @@ run erc kicad-cli sch erc --exit-code-violations --output reports/erc.rpt pcb/Lo
 run drc kicad-cli pcb drc --exit-code-violations --output reports/drc.rpt pcb/LockPCB.kicad_pcb
 run netlist_export kicad-cli sch export netlist --output reports/LockPCB.net pcb/LockPCB.kicad_sch
 run schematic_svg kicad-cli sch export svg --output reports/render/schematic pcb/LockPCB.kicad_sch
-run pcb_svg kicad-cli pcb export svg --layers "F.Cu,In1.Cu,In2.Cu,B.Cu,Edge.Cuts,User.1,User.2,User.3,User.4,User.5,User.6,User.7,User.8,User.9,User.Comments,Eco1.User,Eco2.User" --output reports/render/pcb pcb/LockPCB.kicad_pcb
+run pcb_svg kicad-cli pcb export svg --layers "F.Cu,In1.Cu,In2.Cu,B.Cu,Edge.Cuts,User.1,User.2,User.3,User.4,User.5,User.6,User.7,User.8,User.9,Cmts.User,Eco1.User,Eco2.User" --output reports/render/pcb pcb/LockPCB.kicad_pcb
 run pcb_structure python3 ci/check_pcb_structure.py pcb/LockPCB.kicad_pcb reports/pcb-structure.txt
 run schematic_intent_and_unconnected python3 ci/check_design_intent.py --schematic pcb/LockPCB.kicad_sch --bom docs/BOM_DRAFT.csv --nets docs/NETLIST_DRAFT.csv --netlist reports/LockPCB.net --report reports/design-intent.txt
 
