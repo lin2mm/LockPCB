@@ -7,7 +7,7 @@
 - Repository: private `lin2mm/LockPCB`; fixed working branch `arena/3b84c22f-lockpcb`; do not switch branches, push elsewhere, or merge `main`.
 - KiCad source: `pcb/LockPCB.kicad_pro`, `.kicad_sch`, `.kicad_pcb`.
 - The current board outline is derived from the designer-confirmed 14 × 50 mm PCB drawing. Hole circles remain graphics, not actual drill/pad definitions. The electrical design is incomplete and mechanical fit is unverified.
-- [CI run 38900003033](https://github.com/lin2mm/LockPCB/actions/runs/38900003033) passed on cleanup baseline commit `0d5895dbd61aa7f1c864f90f2ba510dbf238ac89`. CI success is not fit, electrical safety, or fabrication approval.
+- [CI run 38902175365](https://github.com/lin2mm/LockPCB/actions/runs/38902175365) passed on V1 18650 baseline commit `5709a24fc6d6f4be7643af2b7ca46d9fbd778f87`. CI success is not fit, electrical safety, or fabrication approval.
 - No firmware, purchasing, fabrication, or real hardware testing is in scope.
 
 ## Next step

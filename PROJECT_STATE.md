@@ -26,8 +26,8 @@ Updated: 2026-10-16. Status: **PCB engineering skeleton / source-derived mechani
 
 ## Validation
 
-- Cleanup baseline commit: `0d5895dbd61aa7f1c864f90f2ba510dbf238ac89` on the session branch.
-- [GitHub Actions run 38900003033](https://github.com/lin2mm/LockPCB/actions/runs/38900003033) passed KiCad 8 load/export, ERC/DRC, netlist export, structure/intent checks and SVG exports. This validates the checked files under CI, not physical fit, electrical completeness, or fabrication readiness.
+- V1 18650 baseline commit: `5709a24fc6d6f4be7643af2b7ca46d9fbd778f87` on the session branch.
+- [GitHub Actions run 38902175365](https://github.com/lin2mm/LockPCB/actions/runs/38902175365) passed KiCad 8 load/export, ERC/DRC, netlist export, structure/intent checks and SVG exports. This validates the checked files under CI, not physical fit, electrical completeness, or fabrication readiness.
 - Local KiCad CLI/GUI is unavailable in this workspace.
 
 ## Next engineering gates

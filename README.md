@@ -16,6 +16,6 @@
 
 - [打开 KiCad PCB 源文件](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/pcb/LockPCB.kicad_pcb)
 - [打开机械来源基线](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/docs/MECHANICAL_SOURCE_BASELINE.md)
-- [KiCad CI run 38900003033](https://github.com/lin2mm/LockPCB/actions/runs/38900003033)（通过；软件检查不是装配/电气/制造验证）
+- [KiCad CI run 38902175365](https://github.com/lin2mm/LockPCB/actions/runs/38902175365)（通过；软件检查不是装配/电气/制造验证）
 
 不执行固件烧录、采购、PCB 制造或真实硬件测试。未知项保持 TBD；不声称可投板、已 fit 或已完成电气验证。
