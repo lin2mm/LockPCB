@@ -6,6 +6,7 @@
 
 - **KiCad 编辑源：** [`pcb/LockPCB.kicad_pro`](pcb/LockPCB.kicad_pro)、[`pcb/LockPCB.kicad_sch`](pcb/LockPCB.kicad_sch)、[`pcb/LockPCB.kicad_pcb`](pcb/LockPCB.kicad_pcb)。GitHub 当前工作分支是 [`arena/3b84c22f-lockpcb`](https://github.com/lin2mm/LockPCB/tree/arena/3b84c22f-lockpcb)；不合并 `main`。
 - **机械来源、证据等级与待办：** [`docs/MECHANICAL_SOURCE_BASELINE.md`](docs/MECHANICAL_SOURCE_BASELINE.md)。
+- **V1 18650 目标与后续尺寸系列策略：** [`docs/PRODUCT_VARIANTS.md`](docs/PRODUCT_VARIANTS.md)。
 - **本项目文件命名建议：** [`docs/FILE_NAMING_RULES.md`](docs/FILE_NAMING_RULES.md)。
 - 设计决策和其他工程草案在 `decisions/` 与 `docs/`。
 
@@ -15,6 +16,6 @@
 
 - [打开 KiCad PCB 源文件](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/pcb/LockPCB.kicad_pcb)
 - [打开机械来源基线](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/docs/MECHANICAL_SOURCE_BASELINE.md)
-- [KiCad CI run 38898478493](https://github.com/lin2mm/LockPCB/actions/runs/38898478493)（通过；软件检查不是装配/电气/制造验证）
+- [KiCad CI run 38900003033](https://github.com/lin2mm/LockPCB/actions/runs/38900003033)（通过；软件检查不是装配/电气/制造验证）
 
 不执行固件烧录、采购、PCB 制造或真实硬件测试。未知项保持 TBD；不声称可投板、已 fit 或已完成电气验证。

@@ -4,8 +4,8 @@
 
 - Product: compact indoor retrofit smart lock; installation must not require drilling or new wiring.
 - Mechanical concept: one vertical single-cell lithium battery beside a long PCB; motor, reduction gearing and coupler near the top.
-- Power architecture: one-cell 1S system. Battery identity remains unresolved: the prior brief says 18650, factory functional TXT says 18500, and the STEP node labelled `DC-18650-SX` measures about 18 × 18 × 50 mm. Resolve from the sampled cell label/BOM; do not silently select one.
-- BLE is the primary wireless direction; NFC/keypad/fingerprint and other interfaces remain optional unless explicitly confirmed by the factory package or product owner.
+- Power architecture: the current PCB variant (V1) is directed to use one 1S 18650 form factor. Exact cell MPN, chemistry, protection, contacts and installed envelope remain TBD. Factory functional TXT says 18500 and STEP node `DC-18650-SX` measures about 18 × 18 × 50 mm; treat this as a source/sample size conflict, not as a change to the V1 target.
+- BLE is the primary wireless direction; NFC/keypad/fingerprint and other interfaces remain optional unless explicitly confirmed by the factory package or product owner. A second product series with different dimensions is possible, but its geometry is not yet defined and is not part of V1 placement.
 - Current work is PCB engineering only. No firmware flashing, purchasing, fabrication, or real hardware testing.
 - Unknown dimensions, MPNs, footprints, electrical ratings, and tolerances remain TBD. Do not claim fit, safety, or fabrication readiness.
 
@@ -27,6 +27,6 @@
 
 1. Map the selected designer CAD revision to the sampled assembly and establish datums.
 2. Verify the source-derived outline/holes against clean native-mm CAD before manufacturing-feature implementation.
-3. Resolve battery SKU, protection and contact design; obtain motor/gearbox, shaft and current/torque data.
+3. Select a specific 18650 SKU and verify its installed envelope, protection and contact design; obtain motor/gearbox, shaft and current/torque data.
 4. Establish actual component, antenna and service clearances with the physical assembly and tolerance stack.
 5. Complete real schematic pins/nets, component selection, pad/drill definitions, routing, and DRC/manufacturing review only after the required inputs are confirmed.

@@ -26,7 +26,7 @@
 
 ## Six blocking questions (do not invent answers)
 
-1. Exact sampled cell/holder identity (18500 vs 18650) and its mechanical/electrical limits.
+1. Exact V1 18650 cell/holder model and its maximum installed mechanical/electrical limits; verify fit against the relevant enclosure variant.
 2. Maximum PCB length, width and thickness.
 3. Motor model, rated voltage, startup and stall current.
 4. Motor shaft datum and top gearbox dimensions/coupler.

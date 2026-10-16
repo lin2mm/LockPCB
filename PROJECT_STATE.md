@@ -7,21 +7,21 @@ Updated: 2026-10-16. Status: **PCB engineering skeleton / source-derived mechani
 - Private repository: `lin2mm/LockPCB`; work only on `arena/3b84c22f-lockpcb`; do not merge `main`.
 - Checkout: `/home/user/LockPCB`. GitHub branch tree is the source of truth for the editable KiCad project. Designer-confirmed source CAD/DWG/STEP remains in Google Drive and original archives; preserve those inputs.
 - This phase is PCB engineering only: no firmware flashing, purchasing, fabrication, or real hardware test.
-- Read `docs/MECHANICAL_SOURCE_BASELINE.md` before mechanical changes. It is the single current project summary for designer-source facts, derived board geometry, and open validation items.
+- Read `docs/PRODUCT_VARIANTS.md` and `docs/MECHANICAL_SOURCE_BASELINE.md` before mechanical changes. They separate the V1 18650 design target from the supplied factory/sample geometry and record remaining validation items.
 
 ## Current KiCad source
 
 - Files: `pcb/LockPCB.kicad_pro`, `pcb/LockPCB.kicad_sch`, `pcb/LockPCB.kicad_pcb`.
 - PCB outline: source-derived notched 14 × 50 mm envelope in `Edge.Cuts`; visual references for two Ø3.10 mm holes and ~Ø5 mm concentric features are not drills/pads. DWG calls out 1.20 mm thickness. Native-mm/source datum verification remains open because the conversion emitted warnings and inconsistent unit metadata.
-- The nine required mechanical labels exist as annotated layers. They are not proof of clearance or fit; `NO_COMPONENT_ZONE` is a provisional keepout placeholder.
+- The nine required mechanical labels exist as annotated layers. The `BATTERY_KEEP_OUT` drawing now shows a provisional 19 × 70 mm V1 18650 planning envelope only; it is not an enforced KiCad keepout and is not proof of clearance or fit. `NO_COMPONENT_ZONE` is also provisional.
 - The PCB has no actual component footprints, electrical pads, nets, copper pours, or routed tracks. The A3 schematic is text-only architecture and signal intent, not pin-level connectivity.
-- Layer-count, parts, BOM MPNs, footprints, battery contact implementation, exact cell SKU, motor/gearbox interface, and antenna clearances remain TBD or provisional recommendations.
+- First PCB variant (V1) now targets one 1S 18650 form factor per user direction; exact cell MPN, protected-cell envelope, contacts and electrical limits remain TBD. A second product series with different dimensions may follow; do not force it into V1 geometry.
 
 ## Mechanical-source baseline
 
 - The designer-confirmed package under Drive folder `锁-PCB-外壳设计稿-260729` contains eight factory prototype documents already sent for sampling; the user also confirms designer enclosure parts have been sampled and assembled. Use the physical assembled enclosure as the mechanical anchor.
 - The DWG/JPG/STEP-derived PCB plan is 50 × 14 mm, with 1.20 mm DWG thickness callout and two Ø3.10 mm end holes. Full coordinate mapping and evidence limits are in the mechanical baseline.
-- Cell identity remains unresolved: the brief says 18650/1S; factory TXT says 18500; a STEP node named `DC-18650-SX` measures about 18 × 18 × 50 mm. Confirm against sampled cell label/BOM; do not infer SKU from a node name or AABB.
+- V1 PCB design target is 1S 18650. The factory functional TXT says 18500, while the STEP node `DC-18650-SX` measures about 18 × 18 × 50 mm. The supplied enclosure/sample package may therefore represent a 18500-like size; V1 fit to it is not confirmed. Exact 18650 SKU and protected-cell envelope remain TBD.
 - Board-to-enclosure/cell/contact/motor fit, tolerances, and product-revision mapping have not been demonstrated. No fabrication readiness is claimed.
 
 ## Validation
@@ -32,8 +32,8 @@ Updated: 2026-10-16. Status: **PCB engineering skeleton / source-derived mechani
 
 ## Next engineering gates
 
-1. Match the selected designer-confirmed CAD variant/revision to the sampled, assembled enclosure; keep component-origin coordinate transforms in one controlled datum system.
-2. Recheck the DWG-derived contour and datums against a clean native-mm drawing/export; approve drill, plating, polarity and contact design before creating real pads/holes.
-3. Resolve cell SKU from the physical sample/BOM, including protection, sleeve, terminals and installed envelope.
-4. Obtain motor/gearbox, shaft/coupler, current/torque and safe-stall requirements; map the required mechanical labels/zones from the confirmed assembly.
-5. Then progress to actual schematic symbols/pins/nets, component selection and fit/tolerance review. Preserve all unverified values as TBD.
+1. Establish whether the sampled enclosure/CAD variant can accept the V1 18650 target; maintain controlled datums and do not claim fit.
+2. Recheck the DWG-derived contour/datums against clean native-mm source; approve hole/contact function, polarity and plating before creating real pads/holes.
+3. Select an exact 18650 MPN and verify its maximum installed envelope, protection, sleeve and terminals.
+4. Obtain motor/gearbox, shaft/coupler, current/torque and safe-stall requirements; map mechanical zones against the relevant enclosure variant.
+5. Continue schematic, component and placement work for V1; defer a second differently-sized product series until its envelope is supplied. Keep unverified values TBD.

@@ -5,7 +5,7 @@ Status: architecture proposal, not an approved electrical design. No components 
 ## Recommended starting power tree
 
 ```text
-1S lithium cell (18500 vs 18650 unresolved; exact cell TBD)
+1S 18650 cell (V1 design target; exact cell TBD)
   ├─ cell/contact/protection strategy (polarity, overcurrent, undervoltage TBD)
   │   ├─ VBAT_1S ──> motor driver candidate ──> brushed geared motor (direct battery rail preferred)
   │   │                 └─ optional fault/current feedback to BLE MCU, subject to driver capability
@@ -14,7 +14,7 @@ Status: architecture proposal, not an approved electrical design. No components 
   └─ optional charge input: USB-C only if user confirms; charger/power-path TBD
 ```
 
-**Default recommendation:** retain a 1S battery rail, evaluate a low-voltage brushed DC gearmotor and driver that can operate directly from VBAT, and use a dedicated 3.3 V buck-boost rail for BLE/logic. Do not shortlist a cell format or MPN until the sampled cell label/BOM resolves the 18500-versus-18650 discrepancy and motor-current requirements are known. Keep on-board USB-C charging unselected until the product requirement is confirmed. Do not select the converter, driver, protection device, or charger until peak and sleep loads and electrical ratings are known. Direct motor drive avoids a high-power motor boost converter but makes motor voltage range, brownout, current peaks, and EMI constraints decisive.
+**Default recommendation:** use a 1S 18650 form factor as the V1 design basis, evaluate a low-voltage brushed DC gearmotor and driver that can operate from VBAT, and use a dedicated 3.3 V buck-boost rail for BLE/logic. Keep the exact cell MPN open until its maximum installed dimensions, current capability, protection and sourceability are verified. The factory CAD/source appears to model a smaller 18500-like cell; do not assume the existing enclosure fits V1. Keep on-board USB-C charging unselected until required. Do not select power components until peak/sleep loads and electrical ratings are known. Direct motor drive avoids a high-power motor boost converter but makes motor voltage range, brownout, current peaks, and EMI constraints decisive.
 
 ## Budget equations (no invented load values)
 
@@ -30,7 +30,7 @@ Status: architecture proposal, not an approved electrical design. No components 
 | Runtime | TBD | `t ≈ C_usable / I_bat_avg`; requires duty-cycle, cell, converter, and motor measurements/specifications |
 | Thermal / copper drop | TBD | Check driver, cell contacts, connector, and copper against stall/start pulse duration and repetition |
 
-A provisional 1S Li-ion voltage envelope is **not** frozen here. Confirm the selected cell format, chemistry, protection and operating limits before setting undervoltage, converter input, or motor-voltage requirements. Do not infer a runtime from nominal cell capacity alone.
+The V1 cell format is set to 18650, but no exact cell, chemistry, protection or operating limits are frozen. Confirm the selected cell datasheet before setting undervoltage, converter input, or motor-voltage requirements. Do not infer runtime from nominal capacity alone.
 
 ## Power integrity and layout assumptions
 
@@ -42,6 +42,6 @@ A provisional 1S Li-ion voltage envelope is **not** frozen here. Confirm the sel
 
 ## Open inputs blocking numeric power closure
 
-Exact sampled cell model and format (18500 vs 18650); motor part number/rated voltage/start and stall current; driver current/thermal rating and available fault/current-sense outputs; BLE module peak and sleep consumption; selected sensor/accessory functions; charge/USB-C requirement; regulator efficiency at the real load; cell/pack protection and cutoff policy. Until then, no numerical battery budget, runtime claim, current rating, or BOM MPN is released.
+Exact V1 18650 model, maximum protected/unprotected envelope and cell limits; whether the current factory enclosure is a separate 18500-like variant; motor part number/rated voltage/start and stall current; driver current/thermal rating and available fault/current-sense outputs; BLE module peak and sleep consumption; selected sensor/accessory functions; charge/USB-C requirement; regulator efficiency at the real load; cell/pack protection and cutoff policy. Until then, no numerical battery budget, runtime claim, current rating, or BOM MPN is released.
 
-Only the equation-based budget above is current; component ratings and numeric loads remain TBD until the sampled cell, motor and selected module are identified.
+Only the equation-based budget above is current; component ratings and numeric loads remain TBD until the selected 18650 cell, motor and module are identified.

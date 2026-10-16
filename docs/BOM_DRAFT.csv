@@ -1,5 +1,5 @@
 refdes,qty,block,candidate_or_description,manufacturer_part_number,footprint,status,notes
-BT1,1,battery,Single 1S cell; 18500 vs 18650 identity unresolved,TBD,TBD,placeholder,Resolve from sampled cell label/BOM; confirm chemistry protection terminals installed envelope and contact scheme before selection
+BT1,1,battery,Single 1S 18650 cell target for V1; exact SKU TBD,TBD,TBD,placeholder,Select exact cell and verify chemistry protection terminals installed envelope and contact scheme; current factory CAD/source appears 18500-like
 F1,1,battery protection,Cell/pack overcurrent protection placeholder,TBD,TBD,conditional placeholder,Do not duplicate or omit protection until selected cell/holder and system protection architecture are reviewed
 Q1,1,battery protection,Reverse-polarity protection placeholder,TBD,TBD,conditional placeholder,Topology depends on contact/keying and protected-cell choice; no device selected
 U1,1,BLE MCU,Certified BLE module based on nRF52840 as candidate,TBD,TBD,candidate,Module certification antenna geometry I/O map and supply range TBD

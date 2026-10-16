@@ -25,7 +25,7 @@ The drawing is a logical sequence only, not a measured layout. The current board
 ## Separation and interfaces
 
 - Put motor driver, motor connector and local high-frequency/energy-storage decoupling in the motor-current zone; place the driver to minimize the switched current loop. Keep a hardware-default-disabled motor control path and expose driver fault/current feedback only if the selected driver provides a suitable interface.
-- Put battery entry, polarity/overcurrent protection strategy, and a battery measurement path at the battery interface. The exact cell protection, reverse-battery topology and any fuse are still TBD and must be reviewed together with the cell/holder choice.
+- For V1, reserve the battery interface for an 18650 cell; exact MPN, maximum envelope, polarity/overcurrent protection, contacts and measurement path remain TBD. Keep any future size-series variant mechanically separate until its requirements are known.
 - Reserve the farthest available edge from the motor and metalwork for the BLE antenna module; enforce the selected module vendor's full copper/component keepout after module choice.
 - Retain logical interface options for lock-position and door-state sensing, plus tamper input. Sensor type, magnet/target location, external wiring, power state and voltage are not selected; keep these as interface candidates rather than placing components now.
 - Treat battery contact, motor output, charging, debug, sensor, NFC antenna and optional-module connectors as interfaces requiring retention/strain-relief/access/protection decisions, not just pin-count decisions. Consider ESD protection only after exposed connector use and the transient environment are defined.
@@ -44,4 +44,4 @@ The drawing is a logical sequence only, not a measured layout. The current board
 
 ## Physical boundaries remain open
 
-Cell cylinder and contact geometry (18500 vs 18650 unresolved); PCB max width/length/thickness; shell/lockbody metal volume; motor and gearbox envelope; axis datum, coupling and top-end clearance; service access; RF/NFC antenna geometry. All remain TBD in `MECHANICAL_INPUTS.md` and are planning annotations in KiCad.
+V1 18650 target; exact cell/contact envelope remains TBD; potential V2 series dimensions are TBD; PCB max width/length/thickness; shell/lockbody metal volume; motor and gearbox envelope; axis datum, coupling and top-end clearance; service access; RF/NFC antenna geometry. All remain TBD in `MECHANICAL_INPUTS.md` and are planning annotations in KiCad.

@@ -1,6 +1,6 @@
 # Mechanical Source Baseline — LockPCB
 
-**State:** current engineering starting point. This is a compact record of designer-confirmed inputs and the Agent PCB's derived state; it is not a manufacturing release or fit report.
+**State:** current engineering starting point. V1 PCB design is now directed to target one 1S 18650. This record separates that user-selected design target from the factory-source model, which appears 18500-like; it is not a manufacturing release or fit report.
 
 ## Provenance and authority
 
@@ -20,7 +20,7 @@
 
 ## Cell and assembled enclosure
 
-- The earlier project brief specifies one vertical 18650 / 1S cell beside the long PCB; the factory functional TXT specifies 18500. STEP node `DC-18650-SX` is approximately 18 × 18 × 50 mm, which is 18500-size geometry despite its label. The actual cell SKU is **TBD** pending the sampled battery label/BOM and terminal/protection details. Do not silently choose either size.
+- **V1 design target:** one 1S 18650 beside the long PCB, per the user's latest direction. Exact MPN, chemistry, protection, terminals and installed envelope remain TBD. The factory functional TXT specifies 18500; STEP node `DC-18650-SX` is approximately 18 × 18 × 50 mm, which is 18500-size geometry despite its 18650-like label. Therefore, do not claim the supplied factory/sample enclosure fits the V1 target until checked. A second differently-sized product series may follow; its dimensions and cell format are not yet specified.
 - Factory STEP shell mesh `SX-DB-4` is approximately 39.8 × 22.5 × 90.494 mm. This is a tessellated part envelope, not the assembled cavity, internal clearance, or tolerance stack.
 - Identify the exact designer CAD variant/revision corresponding to the physical sampled assembly before using any alternate cover or internal-part model. The assembled physical enclosure is authoritative for follow-up fit checks; no Agent PCB fit has yet been proven.
 - Do not infer cell clearance, fit, usable cavity, motor/shaft alignment, or wall thickness from a bounding box, filename, visual render, or separate-part model alone.
@@ -31,12 +31,12 @@ The following named regions/axes are required in the editable PCB source:
 
 `BATTERY_KEEP_OUT`, `BATTERY_CONTACT_ZONE`, `PCB_MAX_OUTLINE`, `MOTOR_GEARBOX_ZONE`, `SHAFT_AXIS`, `NFC_ANTENNA_ZONE`, `METAL_LOCKBODY_ZONE`, `SERVICE_ACCESS_ZONE`, `NO_COMPONENT_ZONE`.
 
-These are current planning annotations. Except for the actual `Edge.Cuts` outline, do not interpret them as validated clearances or final electrical keepouts. `NO_COMPONENT_ZONE` is provisional and must be rederived from confirmed mechanical dimensions.
+These are current planning annotations. The V1 battery graphic is a provisional 19 × 70 mm 18650 envelope, not an enforced KiCad keepout; revise it to the selected cell's maximum dimensions and tolerance allowance. Except for the actual `Edge.Cuts` outline, do not interpret annotations as validated clearances or final electrical keepouts. `NO_COMPONENT_ZONE` is provisional and must be rederived from confirmed mechanical dimensions.
 
 ## Engineering status and next gates
 
 - The board has no components, pads, nets, copper pours, or routed tracks. The schematic remains text-only design intent; the structural/intent checks do not prove circuit connectivity or fit.
-- Still open: match CAD revision to sample; native-mm datum check; cell SKU/protection and terminal configuration; contact polarity/plating/force/current; motor/gearbox, shaft and coupler interface; enclosure metal and antenna boundaries; assembly and manufacturing tolerances.
+- Still open: match CAD revision to sample and determine whether the V1 18650 envelope fits; native-mm datum check; exact 18650 SKU/protection/terminals; contact polarity/plating/force/current; motor/gearbox, shaft and coupler interface; enclosure metal and antenna boundaries; assembly and manufacturing tolerances. The future size-series variant remains out of scope until dimensions arrive.
 - Recommended order: (1) compare the source CAD against the physical assembly and establish datums; (2) verify the DWG contour and holes; (3) close cell/contact/motor geometry; (4) establish measured zones/clearances; (5) only then implement real KiCad drills/pads, placements, netlist, routing and fabrication checks.
 
 No fit, electrical safety, hardware test, or fabrication readiness is claimed.

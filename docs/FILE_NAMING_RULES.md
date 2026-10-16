@@ -38,7 +38,7 @@ Examples for new reports (illustrative, not a renaming mandate):
 - `01_LPCB-M01_Source_DWG_PCBOutline_FactorySample_CN_v1.md`
 - `02_LPCB-M02_Source_STEP_EnclosureAssembly_FactorySample_CN_v1.md`
 - `03_LPCB-P01_Design_PCBMechanicalOutline_Prototype_EN_v1_review.md`
-- `04_LPCB-E01_Decision_BatteryFormat_Resolution_EN_v1_TBD.md`
+- `04_LPCB-E01_Decision_BatterySKU_Selection_EN_v1_TBD.md`
 - `05_LPCB-T01_Report_ClearanceReview_EnclosureFit_EN_v1.md`
 
 ## Apply without breaking CAD and provenance

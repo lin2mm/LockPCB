@@ -1,6 +1,6 @@
 # LockPCB — Session Handoff
 
-**Start here:** [`README.md`](README.md), then [`PROJECT_STATE.md`](PROJECT_STATE.md), [`docs/MECHANICAL_SOURCE_BASELINE.md`](docs/MECHANICAL_SOURCE_BASELINE.md), and [`docs/FILE_NAMING_RULES.md`](docs/FILE_NAMING_RULES.md). These are the current entry points; do not use older CAD-summary narratives as project truth.
+**Start here:** [`README.md`](README.md), then [`PROJECT_STATE.md`](PROJECT_STATE.md), [`docs/PRODUCT_VARIANTS.md`](docs/PRODUCT_VARIANTS.md), [`docs/MECHANICAL_SOURCE_BASELINE.md`](docs/MECHANICAL_SOURCE_BASELINE.md), and [`docs/FILE_NAMING_RULES.md`](docs/FILE_NAMING_RULES.md). These are the current entry points; do not use older CAD-summary narratives as project truth.
 
 ## Repository and validation
 
@@ -12,4 +12,4 @@
 
 ## Next step
 
-Continue from the current source baseline. Reconcile the sampled cell identity (18500 vs 18650), map the selected confirmed CAD revision to the assembled enclosure, validate the contour against native-mm source, then resolve contact/drill and motor/shaft interfaces before implementing real pads, schematic pins, or routing. Keep unknowns TBD and do not claim fit or fabrication readiness.
+Continue V1 PCB design using 1S 18650 as the user-selected form-factor target. Do not reopen the form-factor choice; keep exact MPN/electrical limits TBD. The factory sample appears 18500-like, so verify whether a separate enclosure variant is needed before claiming fit. Continue non-cell-specific PCB work, check the contour against native-mm source, and resolve motor/shaft interfaces. The potential second size series is deferred. Do not claim fit or fabrication readiness.

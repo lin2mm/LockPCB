@@ -20,7 +20,7 @@ This file contains only the active project baseline and open decisions. Supersed
 
 ## Open decisions
 
-- **Cell:** prior brief says 18650/1S; factory TXT says 18500; STEP node `DC-18650-SX` measures about 18 × 18 × 50 mm. Resolve against the actual sampled cell and BOM.
+- **V1 cell target:** user selected 1S 18650 as the first PCB design basis. Exact SKU and installed envelope remain TBD. Factory TXT says 18500; STEP node `DC-18650-SX` measures about 18 × 18 × 50 mm, so fit to the current factory/sample enclosure is not established. A second size series is deferred.
 - **Contacts:** polarity, terminal material/plating, preload, current, screw/washer stack, insulation and protection are TBD.
 - **Motor/drive:** motor MPN, operating range, startup/stall current, torque, duty, gearbox and shaft/coupler geometry are TBD.
 - **RF/service/metal:** boundaries and antenna keepout require the selected enclosure assembly and module/antenna data.
