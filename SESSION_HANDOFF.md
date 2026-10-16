@@ -6,13 +6,13 @@ Updated 2026-10-16. See `PROJECT_STATE.md` for current state and blockers, `docs
 
 - Repository: private GitHub `lin2mm/LockPCB`.
 - Work branch: `arena/3b84c22f-lockpcb`; do not change branch, merge `main`, or push to another branch.
-- Most recent CI-validated source checkpoint before the geometry-report edits in this worktree: commit `50c56a25067d4e2783efe6894af1a555608f478c` (`Document factory prototype confirmation and source conflicts`); Actions run `38893183352` succeeded. Geometry report and reconciliation updates are currently uncommitted until final checks.
+- Latest KiCad-validated PCB source checkpoint: commit `6fd197f07c085a59bf556f74b528652056866163` (`Align agent PCB outline to confirmed prototype CAD`); Actions run `38898183246` succeeded. Subsequent edits, if any, are documentation/provenance only. Work and pushes remain exclusively on `arena/3b84c22f-lockpcb`.
 - The earlier visual overview is embedded in the README and directly linked to its GitHub blob path.
 
 ## Work completed this continuation
 
 - Reviewed project Drive folders and the `smart-lock-pcb-pre-cad-2026-10-16.zip` archive. Its sole project-specific index is `docs/learning-index.md`; the archive has design documents and drafts but no KiCad or FreeCAD CAD project files.
-- Searched Drive index names and relevant CAD records. Compared both same-named `INDEX_TREE-Arena记录下载20261003前.md` copies locally: they differ (800 vs. 799 indexed files and an extra `INDEX_TREE.md` entry in one), but list the same smart-lock CAD subtree. Read the available CAD handoffs through the later 107/111 geometry summaries. A standalone shell STEP plus a main FreeCAD assembly and body/cover child files were found outside the PCB project root. The newly confirmed factory STEP independently repeats the 39.8 × 22.5 × 90.5 mm shell envelope, but older FCStd-derived assembly bounds remain about 43.09 × 22.51 × 92.56 mm; that historical discrepancy/revision match and usable internal clearance remain unresolved. Product/PCB/battery/motor fit is not confirmed. Old variant restrictions are documented; no old geometry was used to set current PCB dimensions.
+- Searched Drive index names and relevant CAD records. Compared both same-named `INDEX_TREE-Arena记录下载20261003前.md` copies locally: they differ (800 vs. 799 indexed files and an extra `INDEX_TREE.md` entry in one), but list the same smart-lock CAD subtree. Read the available CAD handoffs through the later 107/111 geometry summaries. Designer-confirmed shell STEP/FCStd sources and the factory STEP are treated as confirmed CAD; the 39.8 × 22.5 × 90.5 mm shell envelope and different FCStd assembly bounds (about 43.09 × 22.51 × 92.56 mm) still require assembly/revision mapping, not downgrading. The user's sampled and assembled enclosure is the physical anchor. The current KiCad board contour was updated from the confirmed DWG; its fit with the assembled shell/cell/motor remains unverified.
 - Added `docs/CAD_SOURCE_RECONCILIATION.md`, including source links, project-vs-cross-project index distinctions, prior CAD inventory and conservative treatment.
 - User clarified that all eight files in Drive folder `锁-PCB-外壳设计稿-260729` are designer-confirmed facts/confirmation drawings already sent to the factory for prototype sampling. Parsed DWG, JPG and STEP agree on a 14 × 50 mm PCB plan size; DWG also calls out 1.20 mm thickness and two Ø3.10 mm end holes. The agent PCB now has a source-derived notched Edge.Cuts outline and visual hole/ring references; actual KiCad drill/plating/pad implementation remains TBD.
 - Parsed STEP node `DC-18650-SX` has an 18 × 18 × 50 mm mesh envelope, which supports the TXT's 18500 entry despite the node name. The earlier project requirement still says 18650; confirm the actual prototype cell from sample/BOM. STEP board/cell AABBs have only 0.6 mm separation on one axis, a clearance risk flag rather than a fit result. Full method, DWG unit/conversion caveats and other dimensions are in `docs/FACTORY_PROTOTYPE_GEOMETRY_REPORT.md`.
@@ -24,9 +24,9 @@ Updated 2026-10-16. See `PROJECT_STATE.md` for current state and blockers, `docs
 ## Validation and status
 
 - Local static checks passed: block-level parity (24 planning RefDes / 31 names), MPN and footprint TBD requirements, PCB structure, and S-expression balance.
-- GitHub Actions run [38892456638](https://github.com/lin2mm/LockPCB/actions/runs/38892456638) succeeded on source checkpoint `069b0dc5e50babd1a36a62c943796515af1f1c04`. ERC, DRC, KiCad 8 version gate, netlist export, intent checks, structure checks, and SVG exports all completed. The schematic remains text-only, so unconnected-net evaluation is N/A—not circuit completion.
-- Artifact `kicad-reports-38892456638` (ID `12042730600`) is attached to that Actions run. It had the standard Node.js 20 deprecation warning for GitHub Actions dependencies; checks passed.
-- The local KiCad CLI is unavailable; no local ERC/DRC claim is made.
+- GitHub Actions run [38898183246](https://github.com/lin2mm/LockPCB/actions/runs/38898183246) succeeded on the updated source commit `6fd197f07c085a59bf556f74b528652056866163`. KiCad 8 load/export, ERC, DRC, netlist export, intent checks, structure checks and SVG exports all completed. The schematic remains text-only, so electrical connectivity completion is not claimed.
+- Artifact `kicad-reports-38898183246` (ID `12044646976`) is attached to the run. It included the standard GitHub Actions Node.js 20 deprecation notice; checks passed.
+- The local KiCad CLI is unavailable; the current board was validated by CI, not by local KiCad GUI/CLI.
 - No fabrication readiness, fit, or hardware test is claimed. No merge to `main`.
 
 ## Next recommended steps

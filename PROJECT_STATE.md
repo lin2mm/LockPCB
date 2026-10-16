@@ -34,7 +34,7 @@ Unknown dimensions and values remain TBD. No manufacturing release, electrical c
 ## Validation
 
 - Local KiCad CLI is unavailable. Local static checks passed on engineering source commit `6b22eba`: placeholder structure, CSV/schematic intent parity (24 RefDes / 31 names), MPN/footprint TBD checks, and balanced S-expressions.
-- Latest completed GitHub Actions run [38893183352](https://github.com/lin2mm/LockPCB/actions/runs/38893183352) passed on earlier commit `50c56a25067d4e2783efe6894af1a555608f478c`, when the board still had the Agent test outline. It does not validate the newly imported DWG contour. Local KiCad CLI is unavailable; current verification is limited to structural checks and source-coordinate checks, not ERC/DRC or a KiCad GUI parse.
+- GitHub Actions run [38898183246](https://github.com/lin2mm/LockPCB/actions/runs/38898183246) passed on commit `6fd197f07c085a59bf556f74b528652056866163`, including KiCad 8 load/export, ERC, DRC, netlist, structure and intent checks for the updated 14 × 50 mm board. The schematic remains text-only, so electrical connectivity completion is not claimed. Artifact `kicad-reports-38898183246` (ID `12044646976`) is attached to the run. Local KiCad CLI remains unavailable; the run had the routine GitHub Actions Node.js 20 deprecation notice.
 - Artifact: `kicad-reports-38892456638` (artifact ID `12042730600`), available from the Actions run page.
 
 Never merge `main`; push only to `arena/3b84c22f-lockpcb`.
