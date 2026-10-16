@@ -24,8 +24,11 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Install Ubuntu 24.04 KiCad package (major guarded below)
+      - name: Install KiCad 8 from the KiCad 8.0 release PPA
         run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y software-properties-common
+          sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y kicad
 

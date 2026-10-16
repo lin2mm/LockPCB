@@ -20,3 +20,7 @@
 6. Upload ERC, DRC, version, parity/unconnected reports, netlist, and SVG previews even if a check fails. CI must not filter or downgrade real violations to get green.
 
 A passing structural placeholder check is not evidence that the design is electrically complete, routable, mechanically fitted or ready to fabricate.
+
+## CI observation
+
+The first pushed workflow run on Ubuntu 24.04 installed KiCad 7 from the base Ubuntu repository. The explicit version guard failed (as intended), and the CLI showed `sch erc` was unavailable in that major. The workflow was corrected to add the KiCad 8.0 release PPA before installing KiCad, while retaining the runtime major-version guard. This first run is an honest failure, not a design pass; rerun CI after this change and report the actual KiCad 8 ERC/DRC result.
