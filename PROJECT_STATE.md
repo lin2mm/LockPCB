@@ -16,7 +16,7 @@ Updated: 2026-10-16. Status: PRE-CAD / KiCad source skeleton + mechanical placeh
 - Schematic: A3 text-only architecture/signal-intent sheet. It lists 24 planning RefDes and 31 logical signal names but has no symbols, assigned pins, or connected electrical nets. Intent parity must not be reported as circuit/netlist completion.
 - BOM MPNs and footprints remain TBD. Existing candidates are recommendations only. The interface draft now preserves conditional battery protection, motor sleep/fault/current feedback, lock/door/tamper sensing, and optional NFC/keypad/fingerprint interfaces. Wi-Fi and USB-C charging remain outside the baseline by default.
 - Technical docs: `docs/POWER_TREE_AND_BUDGET.md`, `docs/CORE_ZONING.md`, `docs/MECHANICAL_INPUTS.md`, CSV drafts, decision records, and `docs/CAD_SOURCE_RECONCILIATION.md`.
-- Earlier Drive CAD records include a candidate aluminum shell whose handoff states an external envelope of 39.800 × 22.500 × 90.500 mm. Product/revision match and usable internal clearance are unconfirmed; the measurement does not replace any current `TBD` or imply board fit. Drive source inventory and safe-use restrictions are documented in `docs/CAD_SOURCE_RECONCILIATION.md`.
+- Earlier Drive CAD records include a candidate aluminum shell with conflicting historical envelope reports: `sx-db-4.stp` at 39.800 × 22.500 × 90.500 mm versus an FCStd-derived assembly bound of approximately 43.09 × 22.51 × 92.56 mm. The mismatch and product/revision identity are unresolved; neither replaces a current `TBD` or implies board fit. See `docs/CAD_SOURCE_RECONCILIATION.md`.
 - Visual preview: [engineering overview on GitHub](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/docs/previews/engineering-overview.png). It is illustrative only, not to scale.
 
 ## Blocking inputs
@@ -32,8 +32,8 @@ Unknown dimensions and values remain TBD. No manufacturing release, electrical c
 
 ## Validation
 
-- Local KiCad CLI is unavailable. Local static checks passed on source commit `6b22eba`: placeholder structure, CSV/schematic intent parity (24 RefDes / 31 names), MPN/footprint TBD checks, and balanced S-expressions.
-- GitHub Actions run [38884372990](https://github.com/lin2mm/LockPCB/actions/runs/38884372990) passed on commit `6b22eba81f3655b8db104ce467c3e5e99ae5bc13`. KiCad 8 install/version gate, ERC, DRC, netlist export, intent parity, structure checks, and SVG exports all completed. The no-electrical-pins status remains N/A by design. CI success validates only this PRE-CAD placeholder state.
-- Artifact: `kicad-reports-38884372990` (artifact ID `12038796903`), available from the Actions run page.
+- Local KiCad CLI is unavailable. Local static checks passed on engineering source commit `6b22eba`: placeholder structure, CSV/schematic intent parity (24 RefDes / 31 names), MPN/footprint TBD checks, and balanced S-expressions.
+- GitHub Actions run [38884689186](https://github.com/lin2mm/LockPCB/actions/runs/38884689186) passed on commit `9daf63d39e440f646d36b590c77d434e418ae063`. KiCad 8 install/version gate, ERC, DRC, netlist export, intent parity, structure checks, and SVG exports all completed. The no-electrical-pins status remains N/A by design. CI success validates only this PRE-CAD placeholder state.
+- Artifact: `kicad-reports-38884689186` (artifact ID `12039496470`), available from the Actions run page.
 
 Never merge `main`; push only to `arena/3b84c22f-lockpcb`.

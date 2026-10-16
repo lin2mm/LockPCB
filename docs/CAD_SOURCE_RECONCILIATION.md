@@ -6,24 +6,61 @@ Updated: 2026-10-16. This note records what was found while checking Drive index
 
 - The project backup `smart-lock-pcb-pre-cad-2026-10-16.zip` contains the project-specific `docs/learning-index.md`. It is an engineering learning index spanning product/safety, mechanics, power, motor, interfaces, RF/NFC, schematic/PCB, manufacturing, compliance, and supply chain. It is not a CAD file index.
 - The project Drive root's `03-mechanical` folder was empty when checked. Its dated backup ZIP has requirements and draft architecture, but no `.FCStd`, `.stp`, `.step`, `.kicad_pro`, `.kicad_sch`, or `.kicad_pcb` source files.
-- A Drive-wide filename search also surfaced general Arena/GTM/methodology indexes and website `index.html`/`index.js` files in other folders. Those are not part of the `matchbox-smart-lock-pcb` project tree and are not treated as PCB or mechanical design authority. A broad Arena index tree does reference other smart-lock product/CAD work; its references are treated as cross-project history until the user confirms they describe this exact product.
+- A Drive-wide filename search surfaced general Arena/GTM/methodology indexes and website `index.html`/`index.js` files in other folders. Those are not part of the `matchbox-smart-lock-pcb` project tree and are not treated as PCB or mechanical design authority.
+
+### Drive index sweep and copy comparison
+
+The filename search found these index-like records, classified by scope:
+
+| Index record | Finding |
+|---|---|
+| Project ZIP `docs/learning-index.md` | Project-specific engineering-learning index; points to topic areas and requirements, not native CAD. |
+| [`INDEX_TREE-Arena记录下载20261003前.md` copy A](https://drive.google.com/file/d/1h9QHILm2h2PqYgtl-ykpsPxMazy2CJHg/view) and [copy B](https://drive.google.com/file/d/1m0giT64Df1xJn1c2bhdqdBmXePwpGoYp/view) | General 2026-10-03 download inventory, not a project index. Metadata differs: 57,491 bytes / MD5 `ba7b66d1f9ee3e0912084bc0dd7ee365` versus 57,393 bytes / MD5 `ced3321b1e5b5bed9f521288e7c9028f`. Local text comparison shows one inventory counts 800 files, the other 799; folder labels differ and one has an extra `INDEX_TREE.md` entry. The listed smart-lock CAD subtree is identical in both. Neither is a canonical PCB source. |
+| `00_MTH-J01_Index_FileTree_NamingRules_CN_v3.md` | General Drive file-tree/naming methodology, not a LockPCB requirements source. |
+| `session1-gtm-INDEX.md`, `133_Session10_Index_Tree_2026-09-23.md` | Broad session/GTM inventories; available extraction was truncated, but titles/index entries identify marketing, product/visual and website material. CAD records they mention are cross-project historical assets. |
+| `00_EXP1-J00_Index_MethodologyExperiment_RunLog_CN_v1.xlsx` | Methodology experiment run log; extraction was partial and it is not design authority. |
+| Drive `index.html` / `index.js` search hits | Application/web assets, not KiCad files. |
+| `00_MTH-J08_EXP1_Baseline_Required_Source_Package_CN_v1.zip` | Archive listing contains methodology, supplier/channel and outreach material; no native CAD. |
+
+The broad index trees reference smart-lock CAD records (including historical StartHere, shell/cover CAD reviews and the old CAD ZIP) but do not establish that those artifacts are the current LockPCB product/revision. Their references are treated as cross-project history until explicitly matched. The index also names `09_GTM_CAD_Video_Frozen_Discrepancy_Log`, `19_GTM_CAD_Dimension_And_Visual_Gate`, and `32_GTM_CAD_Shaded_Render_Audit`; exact-name Drive searches did not return those as separate readable files, so only their inventory references were inspected and no findings are attributed to their missing contents.
 
 ## Relevant CAD records located outside the project folder
 
 | Record | Role recorded in its historical handoff | Current treatment |
 |---|---|---|
-| [`sx-db-4.stp`](https://drive.google.com/file/d/1kcUb22aSBNMmsP5p2J7B8XdltalI7R8l/view) | Original aluminum shell STEP. The 2026-09-19 CAD handoff records a shell envelope of 39.800 × 22.500 × 90.500 mm and says to take dimensions from this CAD source, not from renders. | Useful candidate shell reference; product identity and current revision still need confirmation before it can replace the current PCB `TBD` envelope. |
+| [`sx-db-4.stp`](https://drive.google.com/file/d/1kcUb22aSBNMmsP5p2J7B8XdltalI7R8l/view) | Original aluminum shell STEP. A 2026-09-19 handoff records a 39.800 × 22.500 × 90.500 mm envelope and says not to infer dimensions from renders. | Candidate source only; conflicts with a later FCStd-derived envelope (see below). Neither replaces current PCB `TBD` values until the discrepancy and product revision are resolved. |
 | [`装配-DB-4-成功.FCStd`](https://drive.google.com/file/d/1a4h7m__cpRPNrWHB-sA8j9MZpQx_kVCL/view) | Main FreeCAD assembly, including links/placements for the shell and sliding battery cover. | Useful for controlled mechanical coordination, but the current PCB repo has no imported CAD or board-to-shell fit. |
 | [`装配-db-4.FCStd`](https://drive.google.com/file/d/1qacexo-Whomb3wdFqXjxGQyXdBZgTpwS/view) | Historical handoff identifies this as the shell/body BREP child. | Reference only until opened against the selected assembly and product scope. |
 | [`装配-DC-4.FCStd`](https://drive.google.com/file/d/1FyznpYkXJ3PU7L3EOQUYH_T277fETLQ2/view) | Historical handoff identifies this as the sliding cover BREP child. | Reference only; clearance, contact, and manufacturing status are not established for this PCB project. |
 | [`CAD-贴锁-设计-stl.zip`](https://drive.google.com/file/d/1HlDJX0bcZY_ZbNKrUjoXj87Bp9M4inLN/view) | Older CAD package with multiple plastic variants, an aluminum shell, a stainless part, images, and a file named `sx-azb-18650(2).stp`. | Historical source package only. Its handoff explicitly rejects some old DDK/GAI/JCP variants and warns against inferring exterior features from old plastic STEP files. The 18650-named STEP is not a verified cell/holder model. |
-| [`107_GTM_External_FCStd_Downloaded_And_BottomCover_Geometry_Read_2026-09-20.md`](https://drive.google.com/file/d/10jGjXhu7B6Omfj84Cbk-spfytkRhaxkm/view) and [`105_GTM_External_FCStd_And_BottomBatteryCover_Geometry_Verification_Plan_2026-09-20.md`](https://drive.google.com/file/d/1eOiBiAyqlhkCEDpmcjEjPEgguXJxXR8_/view) | Historical geometry-read and verification records for the FreeCAD assembly and cover. The read report contains BREP bounds/placements and an intersection diagnostic; it expressly says the common volume is not by itself a manufacturing defect and that the intended mating surfaces/clearance need engineering interpretation. | Evidence that usable enclosure/cover CAD exists; not evidence of a PCB fit or released enclosure. |
-
+| [`107_GTM_External_FCStd_Downloaded_And_BottomCover_Geometry_Read_2026-09-20.md`](https://drive.google.com/file/d/10jGjXhu7B6Omfj84Cbk-spfytkRhaxkm/view) and [`105_GTM_External_FCStd_And_BottomBatteryCover_Geometry_Verification_Plan_2026-09-20.md`](https://drive.google.com/file/d/1eOiBiAyqlhkCEDpmcjEjPEgguXJxXR8_/view) | Historical geometry-read and verification records for the FreeCAD assembly and cover. The read report contains BREP bounds/placements and an intersection diagnostic; it expressly says the common volume is not by itself a manufacturing defect and that the intended mating surfaces/clearance need engineering interpretation. | Useful historical measurements only. The reports do not establish PCB fit, current product identity, or a released enclosure. |
+| [`00_S5_PRODUCT_START_HERE_CN_v4_2026-09-20.md`](https://drive.google.com/file/d/1RQVbxcRcD9HNACJzoqKb42YM9Zi7D20n/view) | Product/CAD handoff that describes a confirmed shell/cover/knob visual workstream and explicitly flags the mismatch between the STEP and FCStd shell envelopes as unresolved. | Critical discrepancy record; use it to block, not approve, a CAD dimension. |
+| [`101_GTM_Drive_FCStd_Assembly_Verification_And_Render_Delete_QA_2026-09-20.md`](https://drive.google.com/file/d/1VUpnewuLlTiiwTEjFBdgys48jRlHkTn3/view) | Records the main assembly links, placements and active slider joint; at that review point child BREP geometry had not yet been independently verified. | Assembly metadata helps understand cover motion; not an engineering fit release. Later 107/111 records report child solid geometry and placements, but not a revision match, approved clearance or PCB fit. |
+| [`111_GTM_Workspace_Refresh_Summary_2026-09-20.md`](https://drive.google.com/file/d/1pV8007Nz1O9QpbjdbrPiKxqyx5tq7JsX/view) | Later refresh summary reports that all three FCStd files were present; child shell and cover each contained a single BREP solid, and assembly placements/joint were read. It also records unresolved fit/clearance interpretation. | Stronger evidence the historic assembly geometry is readable, but it remains outside the PCB project and is not a fit/release approval. |
+| [`102_GTM_ConfirmedCover_Knob_BatteryCover_From31_TwoImageGate_And_HistoricalCleanupPlan_2026-09-20.md`](https://drive.google.com/file/d/1vuNo74mOWWNg9xEormjg5sg1XJ6I0_40/view) | Visual/asset workflow for a cover, knob and bottom battery cover; says full child BREP and user approval gates remained pending in that workflow. | Visual decisions do not establish this PCB's geometry or its mechanical interface. |
+| [`09_GTM_AI_CAD_Combination_Capability_Assessment_CN_v1.md`](https://drive.google.com/file/d/1qazu-EWL359lekGhzyY54BzzHrvZG_4B/view) | Records limits of image/video-to-CAD and notes filenames (including `18650`) do not prove product dimensions, internals, compatibility or battery specification. | Supports the evidence hierarchy used here: native CAD + verified dimensions first; images/video as secondary evidence only. |
 The FreeCAD files were downloaded for archival inspection during this review. They are deliberately not copied into Git: Google Drive remains the reference/backup location for large native CAD, while this repository remains the KiCad/electrical source of truth.
+
+## Critical unresolved envelope conflict
+
+The historical CAD handoff reports two different outer-shell envelopes:
+
+| Historical source | Reported envelope (mm) |
+|---|---:|
+| `sx-db-4.stp` shell STEP | 39.800 × 22.500 × 90.500 |
+| `装配-db-4.FCStd` BREP placed in the main assembly (as reported in the 2026-09-20 QA note) | approximately 43.09 × 22.51 × 92.56 |
+
+The historical QA note calculates the FCStd-derived bounds as about 3.286 mm larger on X and 2.057 mm larger on Z than the STEP envelope, and marks the cause unresolved. The [`107` geometry-read record](https://drive.google.com/file/d/10jGjXhu7B6Omfj84Cbk-spfytkRhaxkm/view) gives the shell-child local bounds as X = −21.543136…+21.543136 mm, Y = −0.503532…+22.003532 mm, Z = −21.541602…+71.015493 mm. Applying the main FCStd placement (−4.600000, −7.550001, −22.350000 mm; identity rotation) yields X = −26.143137…+16.943136, Y = −8.053532…+14.453531, Z = −43.891601…+48.665493 mm. The reason these BREP-derived bounds differ from the named STEP envelope is not established.
+
+The same record reports the separate cover BREP at about 33.1025 × 6.4001 × 18.8945 mm, placed at the upper end of the assembly with +90° about X. It records a 15.180740 mm³ geometric common volume between the two placed solids, but explicitly cautions this alone is not proof of a manufacturing interference; mating surfaces and clearance intent are unknown. These geometry values are useful for future controlled reconciliation, not fit approval.
+
+The records do not say which shell version should govern. These are conflicting historical CAD results, not an acceptable tolerance or a dimension to average. Until the source file/revision and coordinate transforms are reconciled by a CAD review, treat **both** as unapproved for PCB fit and keep the mechanical outline and internal clearance TBD.
+
+The older product/CAD handoff also explicitly warns against recovering exterior geometry from old plastic variants or images. The native FCStd files and shell STEP were located in Drive outside the PCB project's own `03-mechanical` folder; cross-project/revision identity is still not confirmed.
 
 ## Reconciliation with the current PCB baseline
 
-The current confirmed product requirements remain: compact indoor retrofit lock, no drilling/new wiring, one vertical 1S 18650 alongside a long PCB, and motor/gearing/coupler at the top. The historical shell envelope could be a valuable missing input if it belongs to this exact product/revision. It is **not yet confirmed as the PCB's usable internal envelope**; wall thickness, battery/contact space, cover travel, motor/gearbox, shaft datum, service access, metal and RF exclusions still consume volume.
+The current confirmed product requirements remain: compact indoor retrofit lock, no drilling/new wiring, one vertical 1S 18650 alongside a long PCB, and motor/gearing/coupler at the top. The historical shell CAD could be a valuable missing input if it belongs to this exact product/revision, but the two documented outer-envelope values conflict. It is **not yet confirmed as the PCB's usable internal envelope**; wall thickness, battery/contact space, cover travel, motor/gearbox, shaft datum, service access, metal and RF exclusions still consume volume.
 
 Therefore:
 
