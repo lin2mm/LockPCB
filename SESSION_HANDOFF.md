@@ -6,7 +6,7 @@ Updated 2026-10-16. See `PROJECT_STATE.md` for current state and blockers, `docs
 
 - Repository: private GitHub `lin2mm/LockPCB`.
 - Work branch: `arena/3b84c22f-lockpcb`; do not change branch, merge `main`, or push to another branch.
-- Current engineering checkpoint: commit `6b22eba81f3655b8db104ce467c3e5e99ae5bc13` (`Reconcile Drive CAD history and expand interface intent`).
+- Most recent CI-validated source checkpoint before the latest Drive-folder review: commit `2aa63070eec3a32763c50c776d08d89bf96d49dd` (`Document Drive CAD envelope discrepancy and index review`).
 - The earlier visual overview is embedded in the README and directly linked to its GitHub blob path.
 
 ## Work completed this continuation
@@ -14,6 +14,7 @@ Updated 2026-10-16. See `PROJECT_STATE.md` for current state and blockers, `docs
 - Reviewed project Drive folders and the `smart-lock-pcb-pre-cad-2026-10-16.zip` archive. Its sole project-specific index is `docs/learning-index.md`; the archive has design documents and drafts but no KiCad or FreeCAD CAD project files.
 - Searched Drive index names and relevant CAD records. Compared both same-named `INDEX_TREE-Arena记录下载20261003前.md` copies locally: they differ (800 vs. 799 indexed files and an extra `INDEX_TREE.md` entry in one), but list the same smart-lock CAD subtree. Read the available CAD handoffs through the later 107/111 geometry summaries. A candidate shell STEP plus a main FreeCAD assembly and body/cover child files were found outside the PCB project root. Historical handoffs conflict: shell STEP envelope 39.800 × 22.500 × 90.500 mm versus FCStd-derived assembly bounds about 43.09 × 22.51 × 92.56 mm; the mismatch is explicitly unresolved. Product/revision identity and PCB/battery/motor fit are not confirmed. Old variant restrictions are documented; no old geometry was used to set current PCB dimensions.
 - Added `docs/CAD_SOURCE_RECONCILIATION.md`, including source links, project-vs-cross-project index distinctions, prior CAD inventory and conservative treatment.
+- Inspected the newly added Drive folder `锁-PCB-外壳设计稿-260729`: it contains a STEP assembly with `SX-PCB-5`, one DWG, five JPGs and a functional TXT, but no KiCad source. The dimension JPG calls out 14 × 50 mm; the TXT says 18500 while the current confirmed requirement is 18650, and the STEP labels include 18650-related product names. All are recorded as candidate input only; no design baseline changed.
 - Expanded only the block-level intent: conditional battery protection; motor sleep/fault/current feedback; lock/door/tamper sensor interfaces; optional NFC, keypad, fingerprint, status and accessory signals. All pins, footprints, MPNs, ratings and fit remain TBD/optional. No components or electrical connections were introduced.
 - Extended the schematic intent list to 31 names and the BOM placeholder inventory to 24 references; upgraded the sheet to A3 for legibility. CI testpoint-presence coverage now checks TP1–TP7.
 - Added direct README links to the GitHub PNG preview, updated mechanical/power/zoning documents, and recorded the new history in the decision log.
@@ -21,14 +22,15 @@ Updated 2026-10-16. See `PROJECT_STATE.md` for current state and blockers, `docs
 ## Validation and status
 
 - Local static checks passed: block-level parity (24 planning RefDes / 31 names), MPN and footprint TBD requirements, PCB structure, and S-expression balance.
-- GitHub Actions run [38884689186](https://github.com/lin2mm/LockPCB/actions/runs/38884689186) succeeded on source checkpoint `9daf63d39e440f646d36b590c77d434e418ae063`. ERC, DRC, KiCad 8 version gate, netlist export, intent checks, structure checks, and SVG exports all completed. As before, the schematic has no electrical pins, so the unconnected-net test correctly reports N/A—not circuit completion.
-- Artifact `kicad-reports-38884689186` (ID `12039496470`) is attached to that Actions run. Local log/artifact retrieval had an EOF from GitHub's results receiver, but the Actions UI reports the run and artifact upload as successful.
+- GitHub Actions run [38885704545](https://github.com/lin2mm/LockPCB/actions/runs/38885704545) succeeded on source checkpoint `2aa63070eec3a32763c50c776d08d89bf96d49dd`. ERC, DRC, KiCad 8 version gate, netlist export, intent checks, structure checks, and SVG exports all completed. The schematic remains text-only, so unconnected-net evaluation is N/A—not circuit completion.
+- Artifact `kicad-reports-38885704545` (ID `12038658986`) is attached to that Actions run. It had the standard Node.js 20 deprecation warning for GitHub Actions dependencies; checks passed.
 - The local KiCad CLI is unavailable; no local ERC/DRC claim is made.
 - No fabrication readiness, fit, or hardware test is claimed. No merge to `main`.
 
 ## Next recommended steps
 
-1. Confirm whether the historical FreeCAD shell/assembly and its external envelope belong to the exact current product revision. If confirmed, coordinate the housing, cell/contact, motor/gearbox, shaft axis, service opening and PCB in a common CAD assembly before changing any placeholder dimensions.
-2. Obtain actual cell/holder/contact and motor/gearbox data; these dominate protection, current, thermal and size decisions.
-3. Freeze the baseline optional feature set before assigning MCU pins; keep door/lock/tamper sensing and motor feedback as candidate interfaces until product requirements and driver choice are clear.
-4. Only then move from annotated block intent to actual symbols, pin assignments, a real schematic/netlist, and component/footprint review.
+1. Confirm whether the new `锁-PCB-外壳设计稿-260729` folder belongs to the exact current product/revision, and resolve the 18500 (TXT) versus 18650 (current requirement / STEP labels) conflict.
+2. If confirmed, check the 14 × 50 mm board drawing against the original DWG and STEP assembly, then validate the PCB, fixing/battery contacts, cell, motor/gearbox and shaft in one CAD coordinate system. Do not replace placeholders based on JPGs alone.
+3. Obtain cell/contact and motor/gearbox electrical ratings, especially contact polarity/force/current and motor startup/stall current; review short-circuit and jam/stall protection.
+4. Freeze the baseline optional feature set before assigning MCU pins; keep door/lock/tamper sensing and motor feedback as candidate interfaces until product requirements and driver choice are clear.
+5. Only then move from annotated block intent to actual symbols, pin assignments, a real schematic/netlist, and component/footprint review.

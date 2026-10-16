@@ -1,6 +1,6 @@
-# Google Drive index and legacy CAD source reconciliation
+# Google Drive index and CAD source reconciliation
 
-Updated: 2026-10-16. This note records what was found while checking Drive indexes and earlier CAD-related records. It does **not** promote older CAD dimensions into the current PCB requirements.
+Updated: 2026-10-16. This note records the Drive index sweep and CAD-related sources reviewed. It does **not** promote unconfirmed source dimensions or requirements into the current PCB baseline.
 
 ## Index review
 
@@ -24,6 +24,35 @@ The filename search found these index-like records, classified by scope:
 
 The broad index trees reference smart-lock CAD records (including historical StartHere, shell/cover CAD reviews and the old CAD ZIP) but do not establish that those artifacts are the current LockPCB product/revision. Their references are treated as cross-project history until explicitly matched. The index also names `09_GTM_CAD_Video_Frozen_Discrepancy_Log`, `19_GTM_CAD_Dimension_And_Visual_Gate`, and `32_GTM_CAD_Shaded_Render_Audit`; exact-name Drive searches did not return those as separate readable files, so only their inventory references were inspected and no findings are attributed to their missing contents.
 
+## Newly added PCB-related folder (2026-10-16)
+
+Drive folder: [`锁-PCB-外壳设计稿-260729`](https://drive.google.com/drive/folders/1IWp7LyViBp6CB88CaIeKXHRRBcGfmi9Z), under `20261016-GTM-22-PCB相关`. It is outside the `matchbox-smart-lock-pcb` project folder, but is more directly PCB-related than the earlier general CAD history because its STEP assembly contains products named `SX-PCB-5` and `SX-DB-4`. The STEP's relationship/revision match to the earlier standalone `sx-db-4.stp` has not been reconciled.
+
+Files present: one TXT functional note, one STEP assembly (`sxs-zp-4_asm(1).stp`), one DWG (`PCB板260729(1).dwg`), and five JPGs. There is no KiCad project/schematic/PCB source in this folder.
+
+| File | Drive reference | Review status |
+|---|---|---|
+| `锁-PCB-功能说明-260729.txt` | [TXT](https://drive.google.com/file/d/13GqUzUHtNP8PWyhGNM2isdlg7kBWRwnV/view) | Text read. |
+| `sxs-zp-4_asm(1).stp` | [STEP](https://drive.google.com/file/d/10YUucD4Qwr9iPEB01nr7MfG6hYwjHakQ/view) | Header and product labels inspected; no full CAD application fit/clearance validation. |
+| `PCB板260729(1).dwg` | [DWG](https://drive.google.com/file/d/1_i8Ie_12as9PYupyOewx-VSl-qo5jiqW/view) | Binary file identified by its AC1032 signature; not parsed here. |
+| `锁芯锁-PCB-尺寸图-260729.jpg` | [Dimension JPG](https://drive.google.com/file/d/1CrQXTpq_i5f4AAkHZWn990P0cuQEvZmb/view) | Visually reviewed; 14 × 50 mm callouts visible. |
+| `锁芯锁-PCB-线框图-260729.jpg` | [Wireframe JPG](https://drive.google.com/file/d/1lnwIMNVc-9mXS2CX56u69IZMblFsCH0m/view) | Visually reviewed. |
+| `锁芯锁-PCB板位置-260729.jpg` | [Board-location JPG](https://drive.google.com/file/d/1kn3G2QIjk7qyKhZQRZeI6SzfG-rKb3dl/view) | Visually reviewed; positional reference only. |
+| `锁-外壳设计稿-带锁芯-260729.jpg` | [Enclosure JPG](https://drive.google.com/file/d/1hLZsR1ZJwSS3A44NaMYfBrszMVyXdVPl/view) | Product-render reference; not a dimension source. |
+| `锁-外壳设计稿-棕色-260729.jpg` | [Brown enclosure JPG](https://drive.google.com/file/d/10GuPyWUWmobtuJj1yDZDFCcNFbC1DgWR/view) | Product-render reference; not a dimension source. |
+
+### What the files say or depict
+
+- The TXT note specifies a **single 18500 lithium cell**, **3.3 V motor**, right-hand door as default with a left/right selection procedure, button-operated lock/unlock, blue indicator LED and buzzer feedback, Bluetooth app plus Bluetooth keypad, and lock/unlock motor stall as a signal. It also says the two fixing holes double as positive/negative battery contacts. These are statements in the reference note—not newly user-confirmed requirements or an approved electrical design.
+- This conflicts with the current user-confirmed **single 18650** product requirement. The same STEP assembly has product labels `SX-PCB-5`, `SX-AZB-18650`, and `DC-18650-SX`; the labels suggest 18650-related content but do not resolve the TXT conflict or independently identify a qualified battery.
+- The PCB dimension JPG visibly calls out **14.00 mm × 50.00 mm**. It also shows 28.00 and 5.00 dimensions whose datums are not sufficiently clear in the JPG. The board-location view shows a long narrow board along the lock interior, with motor/gearing at one end. This 14 × 50 candidate is smaller than the current provisional 17.5 × 60 outline and lies within the 20 × 65 review envelope, but that comparison is not a fit validation or a reason to change the placeholder. Verify against the original DWG/CAD.
+- The STEP header identifies `SXS-ZP-4_ASM`, Creo Parametric, 2026-07-29, with millimetre units. Its product labels include several cover variants (`SX-DC-GAI-4`, `SX-DC-DDK`, `SX-DCG-JCP`) as well as the PCB. Do not assume every named variant is installed simultaneously or is the released revision. The assembly's geometry and board-to-housing clearances have not been independently validated in a CAD application.
+- The DWG has an AutoCAD `AC1032` file signature, but it was not parsed here; the image/JPG claims above should be checked against that drawing before use.
+
+### Current treatment and recommendation
+
+Treat this folder as a **high-value candidate source**, not yet as the accepted LockPCB design baseline. Preserve the confirmed 18650 requirement and current board-size placeholders until the user confirms the folder's product/revision and the cell-size discrepancy is reconciled. The two-hole battery-contact concept also needs electrical/mechanical review for polarity, contact force, current capacity, oxidation/fretting, retention, and short-circuit protection before it is adopted.
+
 ## Relevant CAD records located outside the project folder
 
 | Record | Role recorded in its historical handoff | Current treatment |
@@ -39,6 +68,7 @@ The broad index trees reference smart-lock CAD records (including historical Sta
 | [`111_GTM_Workspace_Refresh_Summary_2026-09-20.md`](https://drive.google.com/file/d/1pV8007Nz1O9QpbjdbrPiKxqyx5tq7JsX/view) | Later refresh summary reports that all three FCStd files were present; child shell and cover each contained a single BREP solid, and assembly placements/joint were read. It also records unresolved fit/clearance interpretation. | Stronger evidence the historic assembly geometry is readable, but it remains outside the PCB project and is not a fit/release approval. |
 | [`102_GTM_ConfirmedCover_Knob_BatteryCover_From31_TwoImageGate_And_HistoricalCleanupPlan_2026-09-20.md`](https://drive.google.com/file/d/1vuNo74mOWWNg9xEormjg5sg1XJ6I0_40/view) | Visual/asset workflow for a cover, knob and bottom battery cover; says full child BREP and user approval gates remained pending in that workflow. | Visual decisions do not establish this PCB's geometry or its mechanical interface. |
 | [`09_GTM_AI_CAD_Combination_Capability_Assessment_CN_v1.md`](https://drive.google.com/file/d/1qazu-EWL359lekGhzyY54BzzHrvZG_4B/view) | Records limits of image/video-to-CAD and notes filenames (including `18650`) do not prove product dimensions, internals, compatibility or battery specification. | Supports the evidence hierarchy used here: native CAD + verified dimensions first; images/video as secondary evidence only. |
+
 The FreeCAD files were downloaded for archival inspection during this review. They are deliberately not copied into Git: Google Drive remains the reference/backup location for large native CAD, while this repository remains the KiCad/electrical source of truth.
 
 ## Critical unresolved envelope conflict
@@ -67,7 +97,7 @@ Therefore:
 1. Keep all mandatory named zones in `pcb/LockPCB.kicad_pcb`; do not replace `TBD` dimensions with the historical external envelope.
 2. Keep the current 17.5 × 60 mm board rectangle and 20 × 65 mm review envelope as provisional discussion placeholders only, not a fit claim.
 3. Do not reverse-engineer board placement from screenshots or old non-authoritative plastic STEP variants.
-4. Before any geometry is frozen, confirm the product/revision match and obtain the current complete shell/assembly plus battery contact, motor/gearbox, shaft-axis and service-access geometry. Then check the board, RF/NFC exclusions, clearances, cover travel, and tolerance stack in the same CAD coordinate system.
+4. Before any geometry is frozen, confirm whether the new `SXS-ZP-4_ASM` folder is the current product/revision and resolve its 18500 note versus the confirmed 18650 requirement. Verify the 14 × 50 mm candidate outline against the original DWG and STEP, then check board placement, battery contacts, motor/gearbox, shaft axis, RF/NFC exclusions, cover travel, service access and tolerance stack in one CAD coordinate system.
 5. Keep battery model, holder/contact, actual internal free volume, motor specifications, and board-to-shell fit as `TBD` until verified.
 
 ## Design lessons retained from the prior engineering records

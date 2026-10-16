@@ -44,3 +44,10 @@
 - **历史 CAD 候选**：在其它 Drive 目录找到 `sx-db-4.stp`、主 FreeCAD 装配以及外壳/滑动电池盖的子 FCStd。历史 handoff 对外壳包络有冲突：STEP 为 39.800 × 22.500 × 90.500 mm；FCStd-derived assembly bounds 约为 43.09 × 22.51 × 92.56 mm，原因未解决。没有当前 KiCad PCB、电池接点或电机/减速箱共同装配 fit 证据。
 - **安全处理**：历史文件的产品/修订与当前“火柴盒 retrofit PCB”是否完全一致尚未确认，故只作为待验证 shell 来源，不更改 PCB 外形、内部空间或任何 TBD。旧塑料版本的 handoff 明确限制了哪些文件不可重用；不从截图/旧 STEP 反推结构或制造结论。详细路径/边界见 `CAD_SOURCE_RECONCILIATION.md`。
 - **工程增量**：将旧 pin/net 草案中值得评估的电机 fault/current feedback、lock/door/tamper sensing、服务接口与可选 NFC/keypad/fingerprint 等保留为逻辑信号候选。它们不是新的已确认产品功能或引脚分配；Wi-Fi、USB-C 充电仍不进入 baseline。
+
+## 2026-10-16 — 新增 Drive PCB 参考文件夹（候选，未采纳）
+
+- 新文件夹 `锁-PCB-外壳设计稿-260729` 在 `20261016-GTM-22-PCB相关` 下；含 `sxs-zp-4_asm(1).stp`、`PCB板260729(1).dwg`、5 张 JPG 和功能 TXT，但无 KiCad 源文件。STEP 头部为 2026-07-29 Creo / mm，产品名中有 `SX-PCB-5`。
+- PCB 尺寸 JPG 标注 14.00 × 50.00 mm；板位图显示长板沿锁体内部布置、齿轮/电机在一端。作为新候选的外形/布置输入，与现有 17.5 × 60 mm 占位外形不同，但未对照 DWG/原生 CAD 确认，当前占位不变。
+- 功能 TXT 写 18500 单节电池，与用户已确认的 18650 冲突；同一 STEP 又含 `SX-AZB-18650`、`DC-18650-SX` 名称，不能据名字消除冲突。Motor 3.3V、BLE app/keypad、左右开门配置、LED/蜂鸣反馈、堵转信号及安装孔兼电池正负触点也只是文件中的候选陈述，未升格为用户要求或电气签核。
+- 下一步建议：确认该文件夹是否对应当前产品/修订；先解决 18500/18650，再让 CAD 源负责人核对 14 × 50 板形、固定/电池触点和现有机壳坐标。触点方案需检查极性、防短路、接触力、振动/氧化及电流能力。详见 `CAD_SOURCE_RECONCILIATION.md`。
