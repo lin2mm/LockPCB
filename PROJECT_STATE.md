@@ -7,7 +7,7 @@ Updated: 2026-10-16. Status: **PCB engineering skeleton / source-derived mechani
 - Private repository: `lin2mm/LockPCB`; work only on `arena/3b84c22f-lockpcb`; do not merge `main`.
 - Checkout: `/home/user/LockPCB`. GitHub branch tree is the source of truth for the editable KiCad project. Designer-confirmed source CAD/DWG/STEP remains in Google Drive and original archives; preserve those inputs.
 - This phase is PCB engineering only: no firmware flashing, purchasing, fabrication, or real hardware test.
-- Read `docs/PRODUCT_VARIANTS.md` and `docs/MECHANICAL_SOURCE_BASELINE.md` before mechanical changes. They separate the V1 18650 design target from the supplied factory/sample geometry and record remaining validation items.
+- Read `docs/PRODUCT_VARIANTS.md`, `docs/CAD_VARIANT_COMPARISON.md`, and `docs/MECHANICAL_SOURCE_BASELINE.md` before mechanical changes. They separate the V1 18650 target from the two unverified enclosure-source variants.
 
 ## Current KiCad source
 

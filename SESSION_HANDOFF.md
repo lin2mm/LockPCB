@@ -1,6 +1,6 @@
 # LockPCB — Session Handoff
 
-**Start here:** [`README.md`](README.md), then [`PROJECT_STATE.md`](PROJECT_STATE.md), [`docs/PRODUCT_VARIANTS.md`](docs/PRODUCT_VARIANTS.md), [`docs/MECHANICAL_SOURCE_BASELINE.md`](docs/MECHANICAL_SOURCE_BASELINE.md), and [`docs/FILE_NAMING_RULES.md`](docs/FILE_NAMING_RULES.md). These are the current entry points; do not use older CAD-summary narratives as project truth.
+**Start here:** [`README.md`](README.md), then [`PROJECT_STATE.md`](PROJECT_STATE.md), [`docs/PRODUCT_VARIANTS.md`](docs/PRODUCT_VARIANTS.md), [`docs/CAD_VARIANT_COMPARISON.md`](docs/CAD_VARIANT_COMPARISON.md), [`docs/MECHANICAL_SOURCE_BASELINE.md`](docs/MECHANICAL_SOURCE_BASELINE.md), and [`docs/FILE_NAMING_RULES.md`](docs/FILE_NAMING_RULES.md). These are the current entry points; do not use older CAD-summary narratives as project truth.
 
 ## Repository and validation
 

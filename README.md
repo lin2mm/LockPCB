@@ -5,6 +5,7 @@
 ## 当前事实源
 
 - **KiCad 编辑源：** [`pcb/LockPCB.kicad_pro`](pcb/LockPCB.kicad_pro)、[`pcb/LockPCB.kicad_sch`](pcb/LockPCB.kicad_sch)、[`pcb/LockPCB.kicad_pcb`](pcb/LockPCB.kicad_pcb)。GitHub 当前工作分支是 [`arena/3b84c22f-lockpcb`](https://github.com/lin2mm/LockPCB/tree/arena/3b84c22f-lockpcb)；不合并 `main`。
+- **两套外壳 CAD 对比：** [`docs/CAD_VARIANT_COMPARISON.md`](docs/CAD_VARIANT_COMPARISON.md)。
 - **机械来源、证据等级与待办：** [`docs/MECHANICAL_SOURCE_BASELINE.md`](docs/MECHANICAL_SOURCE_BASELINE.md)。
 - **V1 18650 目标与后续尺寸系列策略：** [`docs/PRODUCT_VARIANTS.md`](docs/PRODUCT_VARIANTS.md)。
 - **本项目文件命名建议：** [`docs/FILE_NAMING_RULES.md`](docs/FILE_NAMING_RULES.md)。

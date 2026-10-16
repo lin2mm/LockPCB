@@ -4,7 +4,7 @@
 
 - User-directed first design: one 1S 18650 form factor beside the longitudinal PCB. This is a design target, not an exact cell MPN approval.
 - The board's `BATTERY_KEEP_OUT` annotation now shows a provisional 19 × 70 mm planning envelope for an 18650-style protected/packaged cell. It is a graphical mechanical reference only: no KiCad keepout rule, SKU fit, clearance, contact, or safety validation is implied. Replace it with the selected cell's actual maximum dimensions and tolerance allowance.
-- The designer factory function note says 18500, and its STEP cell-like node is about 18 × 18 × 50 mm despite the node name. The supplied sample enclosure may therefore be a different size variant; do not claim it accepts V1 until checked against the physical assembled enclosure and exact CAD revision.
+- The designer factory function note says 18500, and its STEP cell-like node is about 18 × 18 × 50 mm despite the node name. The second CAD folder has matching component IDs but no assembled, dimensioned long-size enclosure in the reviewed contents. See [`CAD_VARIANT_COMPARISON.md`](CAD_VARIANT_COMPARISON.md). Do not claim either enclosure accepts V1 until checked against the physical assembled enclosure and exact CAD revision.
 
 ## Future differently-sized series
 

@@ -4,7 +4,7 @@
 
 ## Provenance and authority
 
-- The user confirms that all eight files in Drive folder `锁-PCB-外壳设计稿-260729` are designer-confirmed facts/confirmation drawings already sent to the factory for sampling. CAD/DWG/STEP files inside designer-provided ZIPs are also designer-confirmed source documents.
+- The user confirms that all eight files in Drive folder `锁-PCB-外壳设计稿-260729` are designer-confirmed facts/confirmation drawings already sent to the factory for sampling. CAD/DWG/STEP files inside designer-provided ZIPs are also designer-confirmed source documents. A second folder, `CAD-贴锁-外壳设计-stl`, contains component STEP exports with part IDs overlapping the first assembly; its status as a longer 18650 product variant is unconfirmed. See [`CAD_VARIANT_COMPARISON.md`](CAD_VARIANT_COMPARISON.md).
 - The designer enclosure parts have been sampled and assembled. Use the physical enclosure as the mechanical anchor. This does **not** establish that the Agent PCB, cell, contacts, or motor fit it.
 - Preserve original CAD, DWG, STEP, drawing and archive filenames and contents. Treat Agent-created board graphics/zone placement as editable engineering work, never as designer-approved product geometry.
 - The Google Drive CAD-summary Markdown from the older visual/cover workflow has been moved to recoverable Trash. Designer source drawings, CAD archives, and source folders were not trashed.
