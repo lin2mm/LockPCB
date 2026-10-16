@@ -37,3 +37,10 @@
 - **Charging / metal**：推荐 Rev-A 默认不板载 USB-C，除非在机充电是产品需求；在实际测量前按可能有金属的lock body规划RF/NFC，预留非金属天线窗口，禁止假定具体间隙。
 - **额外建议**：保护/温度/反接策略先于选触点/充电器；电机 jam/stall 要有硬件限流和安全 disable 思路；BLE选认证模块、Wi-Fi默认不进入主板；保留可评估的电机小板方案。
 - **完整理由/风险**：见 `decisions/0004-agent-recommended-defaults.md`。以上均为Agent软建议，不是用户确认事实；原六项继续列为阻塞，CAD与CI可在占位层推进。
+
+## 2026-10-16 — Drive 索引与早期 CAD 对照
+
+- **资料发现**：项目级 `smart-lock-pcb-pre-cad-2026-10-16.zip` 含 `docs/learning-index.md` 和早期工程草案，但不含 CAD/KiCad 源文件；Drive 项目根目录 `03-mechanical` 当时为空。全盘索引还列有其它产品/GTM/CAD 历史记录，并非本项目 PCB 的自动权威来源。
+- **历史 CAD 候选**：在其它 Drive 目录找到 `sx-db-4.stp`、主 FreeCAD 装配以及外壳/滑动电池盖的子 FCStd；历史 handoff 记录了 39.800 × 22.500 × 90.500 mm 外部包络与 BREP 读取结果，但没有当前 KiCad PCB、电池接点或电机/减速箱的共同装配 fit 证据。
+- **安全处理**：历史文件的产品/修订与当前“火柴盒 retrofit PCB”是否完全一致尚未确认，故只作为待验证 shell 来源，不更改 PCB 外形、内部空间或任何 TBD。旧塑料版本的 handoff 明确限制了哪些文件不可重用；不从截图/旧 STEP 反推结构或制造结论。详细路径/边界见 `CAD_SOURCE_RECONCILIATION.md`。
+- **工程增量**：将旧 pin/net 草案中值得评估的电机 fault/current feedback、lock/door/tamper sensing、服务接口与可选 NFC/keypad/fingerprint 等保留为逻辑信号候选。它们不是新的已确认产品功能或引脚分配；Wi-Fi、USB-C 充电仍不进入 baseline。

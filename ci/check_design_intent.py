@@ -44,7 +44,7 @@ def main() -> int:
             f"BOM-only={sorted(bom_refs - schematic_refs)}; "
             f"schematic-only={sorted(schematic_refs - bom_refs)}"
         )
-    required_tps = {f"TP{i}" for i in range(1, 6)}
+    required_tps = {f"TP{i}" for i in range(1, 8)}
     if not required_tps.issubset(bom_refs):
         errors.append(f"BOM missing critical test points: {sorted(required_tps - bom_refs)}")
     if not required_tps.issubset(schematic_refs):

@@ -6,9 +6,11 @@ Status: architecture proposal, not an approved electrical design. No components 
 
 ```text
 1S 18650 (evaluate Molicel INR-18650-P28A; exact cell TBD)
-  ├─ protection / battery connector / measurement (implementation TBD)
+  ├─ cell/contact/protection strategy (polarity, overcurrent, undervoltage TBD)
   │   ├─ VBAT_1S ──> motor driver candidate ──> brushed geared motor (direct battery rail preferred)
+  │   │                 └─ optional fault/current feedback to BLE MCU, subject to driver capability
   │   └─ VBAT_1S ──> 3.3 V buck-boost candidate ──> certified BLE module + logic + optional secure element
+  │                                     └─ optional lock/door/tamper sensor and NFC/expansion interfaces
   └─ optional charge input: USB-C only if user confirms; charger/power-path TBD
 ```
 
@@ -40,4 +42,6 @@ A provisional 1S Li-ion voltage envelope is **not** frozen here. Confirm the sel
 
 ## Open inputs blocking numeric power closure
 
-Exact 18650 model; motor part number/rated voltage/start and stall current; driver current/thermal rating; BLE module peak and sleep consumption; optional functions; charge/USB-C requirement; regulator efficiency at the real load; protection/cutoff policy. Until then, no numerical battery budget, runtime claim, current rating, or BOM MPN is released.
+Exact 18650 model; motor part number/rated voltage/start and stall current; driver current/thermal rating and available fault/current-sense outputs; BLE module peak and sleep consumption; selected sensor/accessory functions; charge/USB-C requirement; regulator efficiency at the real load; cell/pack protection and cutoff policy. Until then, no numerical battery budget, runtime claim, current rating, or BOM MPN is released.
+
+The dated pre-CAD archive and earlier CAD handoff include historical estimates and candidate blocks, but they are not datasheet-verified load data for the current product. Those numbers are intentionally not carried into this active budget. Only the equation-based budget above is current.

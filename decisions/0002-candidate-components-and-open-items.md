@@ -19,7 +19,9 @@
 - `docs/BOM_DRAFT.csv` lists block references for planning only; every MPN and footprint remains TBD. `U1`–`U4` names are not placed KiCad symbols.
 - `docs/PINOUT_DRAFT.csv` uses logical signal names. Specific module pins are deliberately TBD until an exact module is selected.
 - `docs/NETLIST_DRAFT.csv` is a block-level connection intent, not a netlist or connected schematic.
-- `TP1`–`TP5` are proposed accessible points for VBAT, GND, +3V3, SWDIO and SWCLK. Their actual test-pad geometry/placement is TBD.
+- `TP1`–`TP7` are proposed accessible points for VBAT, GND, +3V3, SWDIO, SWCLK, motor-fault and motor-current sense. The latter two are conditional on driver capability; actual test-pad geometry/placement is TBD.
+- Prior pin/net records also suggest optional motor fault/current feedback, lock-position and door-state sensing, tamper, and optional NFC/keypad/fingerprint interfaces. These are now represented as logical candidates in `docs/PINOUT_DRAFT.csv` / `docs/NETLIST_DRAFT.csv`; they do not commit features, hardware, pin assignments, or firmware.
+- A historic CAD handoff records an external shell envelope. Product/revision match and internal clearance are unconfirmed, so no board outline or mechanical `TBD` was changed. See [`../docs/CAD_SOURCE_RECONCILIATION.md`](../docs/CAD_SOURCE_RECONCILIATION.md).
 - The schematic uses annotated block and signal-intent text only. It is not an ERC-cleared electrical circuit; CI reports this status explicitly.
 
 ## Six blocking questions (do not invent answers)

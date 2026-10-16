@@ -1,16 +1,32 @@
 signal,source_block,destination_blocks,domain,status
-VBAT_1S,BT1 battery interface,"U2 buck-boost; U3 motor driver",power rail,intent only
-+3V3_MAIN,U2 buck-boost,"U1 BLE module; U4 optional secure element; J4 optional expansion",power rail,intent only
-GND,battery return,"U1; U2; U3; U4; J3; J4",power return,intent only
+VBAT_1S,BT1 battery interface,"Q1/F1 protection candidate; U2 buck-boost; U3 motor driver",power rail,intent only
++3V3_MAIN,U2 buck-boost,"U1 BLE module; U4 optional secure element; U5 optional NFC; J4 optional expansion",power rail,intent only
+GND,battery return,"U1; U2; U3; U4; U5; U6; J3; J4; J5; J6",power return,intent only
 MOTOR_A,U3 motor driver,M1 motor,motor output,intent only
 MOTOR_B,U3 motor driver,M1 motor,motor output,intent only
 MOTOR_PWM,U1 BLE MCU,U3 motor driver,3.3 V logic,intent only
 MOTOR_EN,U1 BLE MCU,U3 motor driver,3.3 V logic,intent only
-I2C_SDA,U1 BLE MCU,"U4 secure element; J4 optional expansion",3.3 V logic,intent only
-I2C_SCL,U1 BLE MCU,"U4 secure element; J4 optional expansion",3.3 V logic,intent only
+MOTOR_SLEEP,U1 BLE MCU,U3 motor driver,3.3 V logic,intent only
+MOTOR_FAULT_N,U3 motor driver,U1 BLE MCU,3.3 V logic,intent only
+MOTOR_STALL_N,U3 motor driver or U6 current monitor,U1 BLE MCU,3.3 V logic,intent only
+ADC_MOTOR_CURRENT,U3 driver current output or U6 current monitor,U1 BLE MCU ADC,analog,intent only
+I2C_SDA,U1 BLE MCU,"U4 optional secure element; U5 optional NFC controller; J4 optional expansion",3.3 V logic,intent only
+I2C_SCL,U1 BLE MCU,"U4 optional secure element; U5 optional NFC controller; J4 optional expansion",3.3 V logic,intent only
 SWDIO,J3 service connector,U1 BLE MCU,debug,intent only
 SWCLK,J3 service connector,U1 BLE MCU,debug,intent only
 RESET_N,J3 service connector,U1 BLE MCU,3.3 V logic,intent only
 VBAT_SENSE,Battery divider,U1 BLE MCU ADC,analog,intent only
 UART_TX,J3 service connector,U1 BLE MCU,debug,intent only
 UART_RX,J3 service connector,U1 BLE MCU,debug,intent only
+HALL_LOCK,J6 sensor interface,U1 BLE MCU,3.3 V logic,intent only
+HALL_DOOR,J6 sensor interface,U1 BLE MCU,3.3 V logic,intent only
+TAMPER_N,J6 sensor interface,U1 BLE MCU,3.3 V logic,intent only
+NFC_IRQ,U5 optional NFC controller,U1 BLE MCU,3.3 V logic,intent only
+NFC_VEN,U1 BLE MCU,U5 optional NFC controller,3.3 V logic,intent only
+NFC_DWL_REQ,U1 BLE MCU or J3 service connector,U5 optional NFC controller,3.3 V logic,intent only
+FP_UART_TX,J4 optional feature interface,U1 BLE MCU,3.3 V logic,intent only
+FP_UART_RX,U1 BLE MCU,J4 optional feature interface,3.3 V logic,intent only
+KEYPAD_WAKE,J4 optional feature interface,U1 BLE MCU,3.3 V logic,intent only
+LED_STATUS,U1 BLE MCU,J4/status indicator,3.3 V logic,intent only
+BUZZER_EN,U1 BLE MCU,J4/buzzer driver,3.3 V logic,intent only
+WIFI_EN,U1 BLE MCU,J4 optional radio module,3.3 V logic,intent only

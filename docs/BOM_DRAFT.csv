@@ -1,16 +1,25 @@
 refdes,qty,block,candidate_or_description,manufacturer_part_number,footprint,status,notes
 BT1,1,battery,Recommend evaluate Molicel INR-18650-P28A; Samsung INR18650-30Q alternative; exact cell/holder TBD,TBD,TBD,proposed candidate,Unapproved; compare datasheet current capacity authenticity protection format and holder envelope before selection
+F1,1,battery protection,Cell/pack overcurrent protection placeholder,TBD,TBD,conditional placeholder,Do not duplicate or omit protection until selected cell/holder and system protection architecture are reviewed
+Q1,1,battery protection,Reverse-polarity protection placeholder,TBD,TBD,conditional placeholder,Topology depends on contact/keying and protected-cell choice; no device selected
 U1,1,BLE MCU,Certified BLE module based on nRF52840 as candidate,TBD,TBD,candidate,Module certification antenna geometry I/O map and supply range TBD
-U2,1,logic regulator,3.3 V buck-boost converter candidate,TBD,TBD,candidate,Set output current quiescent current and input range after load budget
-U3,1,motor driver,1S brushed DC H-bridge; DRV8213-class candidate,TBD,TBD,candidate,Check motor stall current VM range thermal performance and control interface
+U2,1,logic regulator,3.3 V buck-boost converter candidate,TBD,TBD,candidate,Set output current quiescent current input range and transient response after load budget
+U3,1,motor driver,1S brushed DC H-bridge; DRV8213-class candidate,TBD,TBD,candidate,Check motor stall current VM range thermal performance current feedback and control interface
 U4,1,security,ATECC608C-class secure element optional,TBD,TBD,optional candidate,Provisioning and package variant TBD; DNP until approved
+U5,1,NFC,Optional NFC controller candidate; PN7160-class only for evaluation,TBD,TBD,optional candidate,May move to a daughterboard; controller variant interface and antenna tuning TBD
+U6,1,current sense,Conditional motor-current monitor/amplifier placeholder,TBD,TBD,conditional placeholder,Populate only if selected motor driver does not provide adequate current feedback; range/filter/accuracy TBD
+D1,1,interface protection,ESD/TVS protection placeholder for exposed connectors,TBD,TBD,conditional placeholder,Choose only after connector and transient environment are defined
 M1,1,actuator,Low-voltage brushed DC geared motor candidate,TBD,TBD,placeholder,Exact rated voltage startup/stall current gearbox and shaft are blockers
 J1,1,battery interface,Battery contact or connector TBD,TBD,TBD,placeholder,Mechanical arrangement polarity retention and current capacity TBD
 J2,1,motor interface,Motor/gearbox interface TBD,TBD,TBD,placeholder,Connector or direct solder; mechanical strain relief TBD
-J3,1,service,Debug/service access interface TBD,TBD,TBD,placeholder,SWD and any serial/charging function TBD
-J4,1,expansion,Optional feature daughterboard interface TBD,TBD,TBD,optional placeholder,Feature set voltage pinout and connector envelope TBD
+J3,1,service,Debug/service access interface TBD,TBD,TBD,placeholder,SWD and any serial/charging function TBD; no firmware work in scope
+J4,1,expansion,Optional feature daughterboard interface TBD,TBD,TBD,optional placeholder,Feature set voltage pinout and connector envelope TBD; Wi-Fi remains off baseline
+J5,1,NFC antenna interface,Optional NFC coil/FPC connector TBD,TBD,TBD,optional placeholder,Only if NFC selected; coil geometry tuning ferrite/metal interaction and access TBD
+J6,1,sensor interface,Lock/door/tamper sensor connector TBD,TBD,TBD,optional placeholder,Sensor types placement polarity and harness/PCB routing TBD
 TP1,1,test point,VBAT_1S,TBD,TBD,planned,Test point type and access TBD
 TP2,1,test point,GND,TBD,TBD,planned,Test point type and access TBD
 TP3,1,test point,+3V3_MAIN,TBD,TBD,planned,Test point type and access TBD
 TP4,1,test point,SWDIO,TBD,TBD,planned,Test point type and access TBD
 TP5,1,test point,SWCLK,TBD,TBD,planned,Test point type and access TBD
+TP6,1,test point,MOTOR_FAULT_N,TBD,TBD,planned,Only populated if selected driver exposes a fault output; access TBD
+TP7,1,test point,ADC_MOTOR_CURRENT,TBD,TBD,planned,Current sense may be integrated or omitted; signal range and access TBD

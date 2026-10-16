@@ -11,9 +11,11 @@
 
 ## Visual overview
 
-![Engineering overview of the PRE-CAD mechanical zoning and proposed 1S power architecture](docs/previews/engineering-overview.png)
+[![Engineering overview of the PRE-CAD mechanical zoning and proposed 1S power architecture](docs/previews/engineering-overview.png)](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/docs/previews/engineering-overview.png)
 
-> Derived discussion graphic only; not to scale and not a substitute for KiCad source or mechanical validation. See [`docs/previews/README.md`](docs/previews/README.md).
+[Open the full-size preview directly on GitHub](https://github.com/lin2mm/LockPCB/blob/arena/3b84c22f-lockpcb/docs/previews/engineering-overview.png) · [Open the raw PNG](https://raw.githubusercontent.com/lin2mm/LockPCB/arena/3b84c22f-lockpcb/docs/previews/engineering-overview.png)
+
+> Derived discussion graphic only; not to scale and not a substitute for KiCad source or mechanical validation. The direct GitHub link may require repository access. See [`docs/previews/README.md`](docs/previews/README.md).
 
 ## 当前状态
 

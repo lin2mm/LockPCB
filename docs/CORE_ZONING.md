@@ -24,11 +24,14 @@ The drawing is a logical sequence only, not a measured layout. The current board
 
 ## Separation and interfaces
 
-- Put motor driver, motor connector and local high-frequency/energy-storage decoupling in the motor-current zone; place the driver to minimize the switched current loop.
+- Put motor driver, motor connector and local high-frequency/energy-storage decoupling in the motor-current zone; place the driver to minimize the switched current loop. Keep a hardware-default-disabled motor control path and expose driver fault/current feedback only if the selected driver provides a suitable interface.
+- Put battery entry, polarity/overcurrent protection strategy, and a battery measurement path at the battery interface. The exact cell protection, reverse-battery topology and any fuse are still TBD and must be reviewed together with the cell/holder choice.
 - Reserve the farthest available edge from the motor and metalwork for the BLE antenna module; enforce the selected module vendor's full copper/component keepout after module choice.
-- Treat battery contact, motor output, charging, debug and optional-module connectors as interfaces requiring retention/strain-relief/access decisions, not just pin-count decisions.
-- Keep optional NFC, keypad, fingerprint and Wi-Fi features off the baseline signal/power budget until selected; use a common expansion interface only after I/O, voltage and connector envelope are assessed.
+- Retain logical interface options for lock-position and door-state sensing, plus tamper input. Sensor type, magnet/target location, external wiring, power state and voltage are not selected; keep these as interface candidates rather than placing components now.
+- Treat battery contact, motor output, charging, debug, sensor, NFC antenna and optional-module connectors as interfaces requiring retention/strain-relief/access/protection decisions, not just pin-count decisions. Consider ESD protection only after exposed connector use and the transient environment are defined.
+- Keep optional NFC, keypad, fingerprint and Wi-Fi features off the baseline signal/power budget until selected; use a common expansion interface only after I/O, voltage and connector envelope are assessed. Wi-Fi remains a daughterboard-only option outside the baseline.
 - Do not place NFC antenna over/adjacent to metal based on the current sketch. Required ferrite, coil dimensions, tuning and metal spacing are TBD.
+- Include accessible VBAT, GND, 3V3, debug, and—if the chosen driver supports them—motor-fault/current-sense test access in the later component-level placement review.
 
 ## Alternatives and decision criteria
 
